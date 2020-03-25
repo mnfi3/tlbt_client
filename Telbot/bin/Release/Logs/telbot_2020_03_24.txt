@@ -1,0 +1,184 @@
+file created ...
+2020-03-24  22:36:48	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:36:48	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:36:49	[INFO]		[DB_creator].[DB_creator]	<< database created >>
+2020-03-24  22:37:10	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:37:10	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:37:25	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:37:25	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:38:59	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:38:59	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:39:48	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:39:48	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:40:02	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:40:02	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:40:14	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:40:14	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:40:27	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:40:27	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:40:43	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 99
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:40:43	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:41:35	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 98
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:41:35	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:41:50	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 98
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:41:50	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:42:06	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 98
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:42:06	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>
+2020-03-24  22:42:37	[ERROR]		[PrefManager].[save]	<< save app data to file failed. error=System.ArgumentException: Source array was not long enough. Check srcIndex and length, and the array's lower bounds.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length)
+   at Telbot.license.Crypt.EncryptString(String plainText, String my_key) in c:\dev\c_charp\Telbot\Telbot\license\Crypt.cs:line 98
+   at Telbot.system.PrefManager.save(String json) in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 73 >>
+2020-03-24  22:42:37	[ERROR]		[PrefManager].[read]	<< read app data from file failed. error=System.IO.FileNotFoundException: Could not find file 'C:\telbot\app.tlgbt'.
+File name: 'C:\telbot\app.tlgbt'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at Telbot.system.PrefManager.read() in c:\dev\c_charp\Telbot\Telbot\system\PrefManager.cs:line 48 >>

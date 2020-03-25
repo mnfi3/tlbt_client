@@ -1,0 +1,16 @@
+C:\dev\c_charp\Telbot\Telbot\bin\Release\Telbot.exe.config
+C:\dev\c_charp\Telbot\Telbot\obj\Release\MainWindow.baml
+C:\dev\c_charp\Telbot\Telbot\obj\Release\MainWindow.g.cs
+C:\dev\c_charp\Telbot\Telbot\obj\Release\App.g.cs
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot_MarkupCompile.cache
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.g.resources
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.Properties.Resources.resources
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.csproj.GenerateResource.Cache
+C:\dev\c_charp\Telbot\Telbot\bin\Release\Telbot.exe
+C:\dev\c_charp\Telbot\Telbot\bin\Release\Telbot.pdb
+C:\dev\c_charp\Telbot\Telbot\bin\Release\Newtonsoft.Json.dll
+C:\dev\c_charp\Telbot\Telbot\bin\Release\System.Data.SQLite.dll
+C:\dev\c_charp\Telbot\Telbot\bin\Release\Newtonsoft.Json.xml
+C:\dev\c_charp\Telbot\Telbot\bin\Release\System.Data.SQLite.xml
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.exe
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.pdb

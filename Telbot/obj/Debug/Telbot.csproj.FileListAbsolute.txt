@@ -1,0 +1,16 @@
+C:\dev\c_charp\Telbot\Telbot\Telbot\bin\Debug\Telbot.exe.config
+C:\dev\c_charp\Telbot\Telbot\bin\Debug\Telbot.exe.config
+C:\dev\c_charp\Telbot\Telbot\bin\Debug\Telbot.exe
+C:\dev\c_charp\Telbot\Telbot\bin\Debug\Telbot.pdb
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.csprojResolveAssemblyReference.cache
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\MainWindow.baml
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\MainWindow.g.cs
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\App.g.cs
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot_MarkupCompile.cache
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.g.resources
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.Properties.Resources.resources
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.csproj.GenerateResource.Cache
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.exe
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.pdb
+C:\dev\c_charp\Telbot\Telbot\bin\Debug\Newtonsoft.Json.dll
+C:\dev\c_charp\Telbot\Telbot\bin\Debug\Newtonsoft.Json.xml
