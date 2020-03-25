@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Telbot.helper;
 using Telbot.license;
 
 
@@ -25,8 +26,12 @@ namespace Telbot
         public MainWindow()
         {
             InitializeComponent();
-            int a = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-            //MessageBox.Show(a.ToString());
+            Excel_helper.read(@"C:\Users\Mohsen\Desktop\a.xlsx");
+        }
+
+        public static void hanler(object o, EventArgs e)
+        {
+
         }
     }
 }

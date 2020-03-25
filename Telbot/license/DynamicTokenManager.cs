@@ -20,13 +20,13 @@ namespace Telbot.license
 
         private int getTimeStamp1()
         {
-            int time = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds  - 7200;
+            int time = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds  - 18000;
             return time;
         }
 
         private int getTimeStamp2()
         {
-            int time = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds + 7200;
+            int time = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds + 18000;
             return time;
         }
     }

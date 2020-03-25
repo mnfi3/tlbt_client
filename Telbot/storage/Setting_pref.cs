@@ -7,20 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Telbot.license;
 using Telbot.model;
+using Telbot.system;
 
-namespace Telbot.system
+namespace Telbot.storage
 {
-    class PrefManager
+    class Setting_pref
     {
-         //public const string KEY_DEVICE = "device";
-
+        
         private static string json_string = null;
-        private const string FOLDER = @"C:\telbot\";
-        private const string FILE = @"C:\telbot\app.tlgbt";
+        private const string FOLDER = @"C:\" + Config.APPLICATION_NAME + @"\";
+        private const string FILE = @"C:\" + Config.APPLICATION_NAME + @"\setting.tlgbt";
 
 
 
-        public PrefManager()
+        public Setting_pref()
         {
             if (json_string != null) return;
             else init();
@@ -34,8 +34,8 @@ namespace Telbot.system
             }
             else
             {
-                App_model app = new App_model();
-                string json = JsonConvert.SerializeObject(app);
+                Setting_model setting = new Setting_model();
+                string json = JsonConvert.SerializeObject(setting);
                 save(json);
             }
             
@@ -49,15 +49,15 @@ namespace Telbot.system
                 json_string = Crypt.DecryptString_128(json, G.PRIVATE_KEY);
                 if (json_string.Contains("#"))
                 {
-                    App_model app = new App_model();
-                    json = JsonConvert.SerializeObject(app);
+                    Setting_model setting = new Setting_model();
+                    json = JsonConvert.SerializeObject(setting);
                     save(json);
                 }
                 
             }
             catch (Exception e)
             {
-                Log.e("read app data from file failed. error=" + e.ToString(), "PrefManager", "read");
+                Log.e("read setting data from file failed. error=" + e.ToString(), "Setting_pref", "read");
             //    Device device = new Device();
             //    string json = JsonConvert.SerializeObject(device);
             //    save(json);
@@ -75,7 +75,7 @@ namespace Telbot.system
             }
             catch (Exception e) 
             {
-                Log.e("save app data to file failed. error=" + e.ToString(), "PrefManager", "save");
+                Log.e("save setting data to file failed. error=" + e.ToString(), "Setting_pref", "save");
             }
         }
 
@@ -83,44 +83,44 @@ namespace Telbot.system
 
 
 
-        public bool isLoggedIn()
+        public bool isFirstOpen()
         {
             read();
-            App_model app = JsonConvert.DeserializeObject<App_model>(json_string);
-            if (app.id == 0) return false;
-            return true;
+            Setting_model setting = JsonConvert.DeserializeObject<Setting_model>(json_string);
+            if (setting.is_first_open == 1) return true;
+            return false;
         }
 
 
 
-        public App_model getApp()
+        public Setting_model getSetting()
         {
             string json = read();
-            App_model app = new App_model();
+            Setting_model setting = new Setting_model();
             try
             {
-                if (JsonConvert.DeserializeObject<App_model>(json) != null)
+                if (JsonConvert.DeserializeObject<Setting_model>(json) != null)
                 {
-                    app = JsonConvert.DeserializeObject<App_model>(json);
+                    setting = JsonConvert.DeserializeObject<Setting_model>(json);
                 }
             }
             catch (JsonException e)
             {
-                Log.e("json parsing error. error=" + e.ToString(), "PrefManager", "getApp");
+                Log.e("json parsing error. error=" + e.ToString(), "Setting_pref", "getSetting");
             }
-            return app;
+            return setting;
         }
 
-        public void saveApp(App_model app)
+        public void saveSetting(Setting_model setting)
         {
-            string json = JsonConvert.SerializeObject(app);
+            string json = JsonConvert.SerializeObject(setting);
             save(json);
         }
 
-        public void logoutDevice()
+        public void resetSetting()
         {
-            App_model app = new App_model();
-            save(JsonConvert.SerializeObject(app));
+            Setting_model setting = new Setting_model();
+            save(JsonConvert.SerializeObject(setting));
         }
     }
 }

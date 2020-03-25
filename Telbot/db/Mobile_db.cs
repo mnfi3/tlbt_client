@@ -21,7 +21,7 @@ namespace Telbot.db
                 {
                     mobile = new Mobile_model();
                     mobile.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
-                    mobile.number = dataReader.GetInt32(dataReader.GetOrdinal("number"));
+                    mobile.number = dataReader.GetString(dataReader.GetOrdinal("number"));
                     mobile.first_name = dataReader.GetString(dataReader.GetOrdinal("first_name"));
                     mobile.last_name = dataReader.GetString(dataReader.GetOrdinal("last_name"));
 
@@ -82,7 +82,7 @@ namespace Telbot.db
                 {
                     mobile = new Mobile_model();
                     mobile.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
-                    mobile.number = dataReader.GetInt32(dataReader.GetOrdinal("number"));
+                    mobile.number = dataReader.GetString(dataReader.GetOrdinal("number"));
                     mobile.first_name = dataReader.GetString(dataReader.GetOrdinal("first_name"));
                     mobile.last_name = dataReader.GetString(dataReader.GetOrdinal("last_name"));
 

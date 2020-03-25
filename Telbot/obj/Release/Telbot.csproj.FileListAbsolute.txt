@@ -14,3 +14,5 @@ C:\dev\c_charp\Telbot\Telbot\bin\Release\Newtonsoft.Json.xml
 C:\dev\c_charp\Telbot\Telbot\bin\Release\System.Data.SQLite.xml
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.exe
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.pdb
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.csprojResolveAssemblyReference.cache
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.csproj.ResolveComReference.cache
