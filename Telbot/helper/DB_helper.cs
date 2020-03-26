@@ -29,6 +29,11 @@ namespace Telbot.helper
             }
 
         }
+
+        public static void restore()
+        {
+
+        }
        
     }
 }

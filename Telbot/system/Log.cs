@@ -69,13 +69,13 @@ namespace Telbot.system
             {
                 using (StreamWriter sw = File.CreateText(path))
                 {
-                    sw.WriteLine("file created ...");
+                    sw.WriteLine("file created ...\n");
                 }
             }
 
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine(line);
+                sw.WriteLine(line + "\n");
             }
 
 
@@ -91,6 +91,11 @@ namespace Telbot.system
 
         public static void removeOldLogs()
         {
+            if (!Directory.Exists(FOLDER))
+            {
+                System.IO.Directory.CreateDirectory(FOLDER);
+                return;
+            }
             DateTime datetime;
 
 

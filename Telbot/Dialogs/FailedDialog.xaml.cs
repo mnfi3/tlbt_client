@@ -10,28 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Telbot.helper;
-using Telbot.license;
 
-
-namespace Telbot
+namespace Telbot.Dialogs
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for FailedDialog.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FailedDialog : Window
     {
-        public MainWindow()
+      
+        public FailedDialog(string message)
         {
+            
             InitializeComponent();
-            Excel_helper.read(@"C:\Users\Mohsen\Desktop\a.xlsx");
-        }
+            txt_message.Text = message;
 
-        public static void hanler(object o, EventArgs e)
+        }
+        private void btn_close_dialog(object sender, RoutedEventArgs e)
         {
+            this.Close();
 
         }
+
+        private void DockPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+ 
     }
 }

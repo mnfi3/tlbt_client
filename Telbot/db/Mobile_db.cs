@@ -8,7 +8,7 @@ using Telbot.model;
 
 namespace Telbot.db
 {
-    class Mobile_db:Model_db
+    class Mobile_db:Base_db
     {
         public List<Mobile_model> getMobiles()
         {
@@ -36,41 +36,42 @@ namespace Telbot.db
         public int saveMobile(Mobile_model mobile)
         {
             values.Clear();
-            values.Add("@number", mobile.number.ToString());
+            values.Add("@number", mobile.number);
             values.Add("@first_name", mobile.first_name);
             values.Add("@last_name", mobile.last_name);
             return db.insert("insert into mobiles (number, first_name, last_name) values (@number, @first_name, @last_name)", values);
         }
 
-        public List<Mobile_model> searchMobiles(Int32 search, Int32 from, Int32 to, string first_name = "", string last_name = "")
+        public List<Mobile_model> searchMobiles(string search = "", string from = "", string to = "", string first_name = "", string last_name = "")
         {
             List<Mobile_model> mobiles = new List<Mobile_model>();
+            values.Clear();
             string query = "select * from mobiles where 1=1 ";
 
-            if (search != 0)
+            if (search.Length > 0)
             {
                 query += " and number like %@search% ";
-                values.Add("@search", search.ToString());
+                values.Add("@search", search);
             }
-            if (from != 0)
+            if (from.Length > 0)
             {
                 query += " and number >= @from ";
-                values.Add("@from", from.ToString());
+                values.Add("@from", from);
             }
-            if (from != 0)
+            if (from.Length > 0)
             {
                 query += " and number <= @to ";
-                values.Add("@to", to.ToString());
+                values.Add("@to", to);
             }
             if (first_name.Length > 0)
             {
                 query += " and first_name like %@first_name% ";
-                values.Add("@first_name", to.ToString());
+                values.Add("@first_name", to);
             }
             if (last_name.Length > 0)
             {
                 query += " and last_name like %@last_name% ";
-                values.Add("@last_name", to.ToString());
+                values.Add("@last_name", to);
             }
 
 
@@ -92,6 +93,33 @@ namespace Telbot.db
 
             db.close();
             return mobiles;
+        }
+
+
+
+        public Mobile_model findMobile(string number)
+        {
+            Mobile_model mobile = null;
+            values.Clear();
+            values.Add("@number", number);
+            SQLiteDataReader dataReader = db.select("select * from mobiles where number = @number");
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+
+                    mobile = new Mobile_model();
+                    mobile.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
+                    mobile.number = dataReader.GetString(dataReader.GetOrdinal("number"));
+                    mobile.first_name = dataReader.GetString(dataReader.GetOrdinal("first_name"));
+                    mobile.last_name = dataReader.GetString(dataReader.GetOrdinal("last_name"));
+                    break;
+
+                }
+            }
+
+            db.close();
+            return mobile;
         }
     }
 }

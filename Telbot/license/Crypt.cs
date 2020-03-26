@@ -12,8 +12,8 @@ namespace Telbot.license
     class Crypt
     {  //private const string ClientInitVector = "lab_card_printer";
         private const string ClientInitVector = "e_z_i_t_e_c_h_ir";
-        private const int ClientKeysize = 256;
-        private const string key = "d8y5g2l1e9q6g5s2d8y5g2l1e9q6g5s2";
+        private const int ClientKeysize = 128;
+        private const string TIME_TOKEN_KEY = "d88es5dse64s";
 
 
 
@@ -38,7 +38,7 @@ namespace Telbot.license
             }
             catch (CryptographicException e)
             {
-                return "#fail" + e.ToString(); ;
+                return "#" + e.ToString(); ;
             }
 
         }
@@ -66,7 +66,7 @@ namespace Telbot.license
             }
             catch (CryptographicException e)
             {
-                return "#fail";
+                return "#";
             }
         }
 
@@ -82,11 +82,16 @@ namespace Telbot.license
 
 
 
-        public static string EncryptString_256(string plainText, string my_key = key)
+        public static string EncryptString_256(string plainText, string my_key = TIME_TOKEN_KEY)
         {
             try
             {
-                byte[] key = Encoding.ASCII.GetBytes(my_key);
+               
+
+                SHA256 mySHA256 = SHA256Managed.Create();
+                byte[] key = mySHA256.ComputeHash(Encoding.ASCII.GetBytes(my_key));
+
+
                 byte[] iv = new byte[16] { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
                 // Instantiate a new Aes object to perform string symmetric encryption
                 Aes encryptor = Aes.Create();
@@ -137,11 +142,12 @@ namespace Telbot.license
             }
         }
 
-        public static string DecryptString_256(string cipherText, string my_key = key)
+        public static string DecryptString_256(string cipherText, string my_key = TIME_TOKEN_KEY)
         {
             try
             {
-                byte[] key = Encoding.ASCII.GetBytes(my_key);
+                SHA256 mySHA256 = SHA256Managed.Create();
+                byte[] key = mySHA256.ComputeHash(Encoding.ASCII.GetBytes(my_key));
                 byte[] iv = new byte[16] { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
                 // Instantiate a new Aes object to perform string symmetric encryption
                 Aes encryptor = Aes.Create();
@@ -184,6 +190,10 @@ namespace Telbot.license
                     // Convert the decrypted byte array to string
                     plainText = Encoding.ASCII.GetString(plainBytes, 0, plainBytes.Length);
                 }
+                catch (CryptographicException e)
+                {
+                    return "#";
+                }
                 finally
                 {
                     // Close both the MemoryStream and the CryptoStream
@@ -196,6 +206,7 @@ namespace Telbot.license
             }
             catch (CryptographicException e)
             {
+                MessageBox.Show(e.ToString());
                 return "#";
             }
         }

@@ -10,6 +10,7 @@ namespace Telbot.model
     public class App_model
     {
         public int id { set; get; }
+        public int is_logged_in { set; get; }
         public string user_name { set; get; }
         public string password { set; get; }
         public string token { set; get; }
@@ -19,6 +20,7 @@ namespace Telbot.model
         public App_model()
         {
             id = 0;
+            is_logged_in = 0;
             user_name = "";
             password = "";
             token = "";

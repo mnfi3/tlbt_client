@@ -8,9 +8,9 @@ namespace Telbot.license
 {
     class DynamicTokenManager
     {
-        public  bool checkTokenValidity(string token)
+        public  bool checkTokenValidity(string time_token)
         {
-            string text = Crypt.DecryptString_256(token);
+            string text = Crypt.DecryptString_256(time_token);
             if (text == "#") return false;
             int time = int.Parse(text);
             if (time > getTimeStamp2() || time < getTimeStamp1()) return false;

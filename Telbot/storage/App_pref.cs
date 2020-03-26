@@ -47,7 +47,7 @@ namespace Telbot.storage
             {
                 string json = File.ReadAllText(FILE);
                 json_string = Crypt.DecryptString_128(json, G.PRIVATE_KEY);
-                if (json_string.Contains("#"))
+                if (json_string == "#")
                 {
                     App_model app = new App_model();
                     json = JsonConvert.SerializeObject(app);

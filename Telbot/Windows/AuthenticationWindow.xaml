@@ -1,0 +1,11 @@
+﻿<Window x:Class="Telbot.AuthenticationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FirstWindow"
+        Icon="../ic_app.ico"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" 
+        Height="600" Width="800" FontFamily="/Telbot;component/Fonts/vazir/#Vazir FD-WOL">
+
+    <Frame x:Name="authentication_frames" Source="../Pages/Authentications/License.xaml" ContentRendered="authentication_frames_ContentRendered"></Frame>
+
+</Window>

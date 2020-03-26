@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Telbot.Dialogs;
 using Telbot.model;
 using Telbot.storage;
+using Telbot.system;
 
 namespace Telbot.api
 {
@@ -33,14 +35,14 @@ namespace Telbot.api
             if (res.status == 1)
             {
                 JObject data = res.data;
-                JObject app_obj = data["app"].Value<JObject>();
-                app = App_model.parse(app_obj);
-                app.token = data["token"].Value<string>(); ;
-                app.time_token = data["time_token"].Value<string>(); ;
+                app = App_model.parse(res.data);
+                app.is_logged_in = 1;
                 Log.i("app login was successfull", "App_service", "login");
             }
             else
             {
+                FailedDialog _dialog = new FailedDialog(res.message);
+                _dialog.ShowDialog();
                 app = new App_model();
                 Log.e(res.full_response, "App_service", "login");
             }
@@ -55,7 +57,7 @@ namespace Telbot.api
             Request req = new Request();
             eventAuthCheck += handler;
             Dictionary<string, string> headers = new Dictionary<string, string> { { "app-token", G.app.token }, { "client-key", G.client_key } };
-            req.post(Urls.APP_AUTH_CHECK, new Dictionary<string, string>(), headers, authCheckCallBack);
+            req.get(Urls.APP_AUTH_CHECK, new Dictionary<string, string>(), headers, authCheckCallBack);
         }
 
         private void authCheckCallBack(object sender, EventArgs e)

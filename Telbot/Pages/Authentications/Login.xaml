@@ -1,0 +1,77 @@
+﻿<Page x:Class="Telbot.Pages.Authentications.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d"
+      FontFamily="/Telbot;component/Fonts/vazir/#Vazir FD-WOL"
+      d:DesignHeight="600" d:DesignWidth="800" 
+	Title="Login">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="40px"/>
+        <Setter Property="Width" Value="100px"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="5"/>
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FF363535"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+
+        </Style>
+        <Style x:Key="InputBox" TargetType="{x:Type Control}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Height" Value="50px"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+            <Setter Property="BorderBrush" Value="#FF060606"/>
+        </Style>
+    </Page.Resources>
+    <Grid Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid Row="0" Margin="0,20,0,10" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Image Source="../../Images/logo.jpg" ></Image>
+            </Grid>
+            <Grid Row="1" FlowDirection="RightToLeft">
+                <StackPanel Margin="250,50">
+                    <Label Content="نام کاربری"></Label>
+                    <TextBox Name="txt_user_name" Style="{StaticResource InputBox}"></TextBox>
+                    <Label Content="رمز عبور" Margin="0,15,0,0" ></Label>
+                    <PasswordBox Name="txt_password" Style="{StaticResource InputBox}"></PasswordBox>
+                </StackPanel>
+
+            </Grid>
+            <Grid Row="2" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <StackPanel>
+                    <Button Content="ورود" Name="btnLogin" Click="btnLogin_Click"></Button>
+                    <TextBlock Margin="0,5,0,0">
+                    <Hyperlink NavigateUri="http://google.com" Click="Hyperlink_Click">اگر ثبت نام نکرده اید کلیک کنید</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

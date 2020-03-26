@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\dev\c_charp\Telbot\Telbot\App.xaml
-11151548125
+10-1650609536
 
-31-915419173
-19-1070998077
-MainWindow.xaml;
+44-757376475
+25332765878
+Dialogs\EnterConfiguration.xaml;Dialogs\FailedDialog.xaml;Dialogs\SuccessfullDialog.xaml;Pages\Authentications\EnterCode.xaml;Pages\Authentications\EnterNumber.xaml;Pages\Authentications\EnterTwoStepVerificationPassword.xaml;Pages\Authentications\License.xaml;Pages\Authentications\Login.xaml;Windows\AuthenticationWindow.xaml;Windows\MainWindow.xaml;
 
 False
 

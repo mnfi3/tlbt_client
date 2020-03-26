@@ -1,0 +1,109 @@
+﻿<Page x:Class="Telbot.Pages.Authentications.EnterNumber"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      FontFamily="/Telbot;component/Fonts/vazir/#Vazir FD-WOL"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="EnterNumber">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="40px"/>
+            <Setter Property="Width" Value="100px"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="BorderBrush" Value="Red"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF363535"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <Style x:Key="InputBox" TargetType="{x:Type Control}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Width" Value="200px"/>
+            <Setter Property="Height" Value="50px"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+            <Setter Property="BorderBrush" Value="#FF060606"/>
+        </Style>
+        <!--Pulse-->
+        <Storyboard x:Key="Pulse" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.15"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.15"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard >
+        <Storyboard x:Key="bounce" >
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PulseBox">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0.9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.35" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Grid HorizontalAlignment="Center"   Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,80">
+            <Image x:Name="PulseBox"  Source="../../images/smartphone.png" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+
+                <TextBlock FlowDirection="RightToLeft" FontSize="12" Margin="0,0,0,10">شماره تلفن تلگرام را برای دریافت کد وارد کنید.</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Background="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  BorderBrush="DarkRed" x:Name="country_code" FontSize="20">
+
+                    </ComboBox>
+                    <TextBox Style="{StaticResource InputBox}" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting ="TextBoxPasting" Width="300"></TextBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="ارسال کد" Margin="0,30,15,0" Click="btn_send_code"></Button>
+                    <Button Content="تنظیمات apikey,apihash" Margin="15,30,0,0" Click="btn_open_Enter_configuration" Width="200"></Button>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource bounce}"></BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+</Page>

@@ -15,10 +15,15 @@ namespace Telbot.system
     {
         public static string client_key;
         public static App_model app;
+        public static Telegram_model telegram;
         public static bool isLoggedIn = false;
         public const string PUBLIC_KEY = "kkkF19BEE2EF1yyy";
         public static string PRIVATE_KEY ;
         public static Setting_model setting;
+
+        //pouya
+        public static string ApiHash { get; set; }
+        public static string ApiId { get; set; }
 
 
 
@@ -27,11 +32,22 @@ namespace Telbot.system
             client_key = Security.getClientKey();
             PRIVATE_KEY = "aaa" + client_key + "bbb";
             app = new App_pref().getApp();
+            telegram = new Telegram_pref().getTelegram();
             Creator_db creator = new Creator_db();
             Log.removeOldLogs();
 
 
+            ApiHash = "";
+            ApiId = "";
+
         }
+
+
+
+       
+
+      
+        
     }
 
     

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Telbot.storage;
+using Telbot.system;
 
 namespace Telbot.api
 {
@@ -151,7 +152,7 @@ namespace Telbot.api
                 }
                 else
                 {
-                    res.message = "server internal error";
+                    res.message = "خطا در ارتباط با سرور.لطفا دوباره امتحان کنید";
                     res.status = -1;
                     res.data = new JObject();
                     Log.e("server internal error in url:" + url + "\t", "Request", "post");
@@ -159,7 +160,7 @@ namespace Telbot.api
             }
             catch (HttpRequestException e)
             {
-                res.message = "connection error";
+                res.message = "خطا در ارتباط با شبکه.لطفا از برقراری اینترنت مطمئن شوید";
                 res.status = -2;
                 res.data = new JObject();
                 Log.e("connection error in url:" + url + "\t" + e.ToString(), "Request", "post");

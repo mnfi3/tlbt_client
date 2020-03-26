@@ -9,6 +9,7 @@ using System.Windows;
 using Telbot.model;
 using Telbot.storage;
 using Telbot.system;
+using Telbot.db;
 
 namespace Telbot.helper
 {
@@ -87,10 +88,6 @@ namespace Telbot.helper
 
             return mobiles;
         }
-
-
-
-
         public static int getRowCount(string location)
         {
             Excel.Application xlApp;
@@ -114,6 +111,83 @@ namespace Telbot.helper
             Marshal.ReleaseComObject(xlApp);
 
             return row_count;
+        }
+
+        public static void excelToDb(string location, EventHandler percent_handler = null)
+        {
+            EventHandler handler = null;
+            handler += percent_handler;
+            Mobile_db db = new Mobile_db();
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            Excel.Range range;
+
+            xlApp = new Excel.Application();
+            xlWorkBook = xlApp.Workbooks.Open(location, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            int row_count = 0;
+            int column_count = 0;
+
+            range = xlWorkSheet.UsedRange;
+            row_count = range.Rows.Count;
+            column_count = range.Columns.Count;
+
+            string str = "";
+
+            for (int row = 1; row <= row_count; row++)
+            {
+                Mobile_model mobile = new Mobile_model(); ;
+                for (int column = 1; column <= column_count; column++)
+                {
+                    try
+                    {
+                        if (((range.Cells[row, column] as Excel.Range).Value2).GetType() == typeof(int) || ((range.Cells[row, column] as Excel.Range).Value2).GetType() == typeof(double))
+                        {
+                            str = ((double)(range.Cells[row, column] as Excel.Range).Value2).ToString();
+                        }
+                        else
+                        {
+                            str = (range.Cells[row, column] as Excel.Range).Value2;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Log.e("reading from excel failed. error=" + e.ToString(), "Excel_helper", "excelToDb");
+                    }
+
+                    switch (column)
+                    {
+                        case 1:
+                            mobile.number = str;
+                            break;
+                        case 2:
+                            mobile.first_name = str;
+                            break;
+                        case 3:
+                            mobile.last_name = str;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                Mobile_model mob = db.findMobile(mobile.number);
+                if (mob != null)
+                {
+                    db.saveMobile(mobile);
+                }
+                int percent = row / row_count * 100;
+                handler(percent, new EventArgs());
+            }
+
+            xlWorkBook.Close(true, null, null);
+            xlApp.Quit();
+
+            Marshal.ReleaseComObject(xlWorkSheet);
+            Marshal.ReleaseComObject(xlWorkBook);
+            Marshal.ReleaseComObject(xlApp);
         }
     }
 }
