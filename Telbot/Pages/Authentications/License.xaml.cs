@@ -30,6 +30,9 @@ namespace Telbot.Pages.Authentications
     /// </summary>
     public partial class License : Page
     {
+
+        private Cursor previousCursor;
+
         public License()
         {
             InitializeComponent();
@@ -49,6 +52,9 @@ namespace Telbot.Pages.Authentications
 
         private void checkLicense()
         {
+            previousCursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = Cursors.Wait;
+
             btn_check_again.Visibility = Visibility.Collapsed;
 
             //local sesseion is set
@@ -67,6 +73,8 @@ namespace Telbot.Pages.Authentications
 
         private void auth_checked(object sender, EventArgs e)
         {
+            Mouse.OverrideCursor = previousCursor;
+
             Response res = (Response)sender;
             App_model app = new App_model();
             //server response is ok
@@ -85,6 +93,9 @@ namespace Telbot.Pages.Authentications
                 if (manager.checkTokenValidity(app.time_token))
                 {
                     //checkTelegramAuth();
+                    previousCursor = Mouse.OverrideCursor;
+                    Mouse.OverrideCursor = Cursors.Wait;
+
                     checkTelegramSession();
                 }
                 //time token not ok
@@ -114,13 +125,15 @@ namespace Telbot.Pages.Authentications
 
         private void checkTelegramSession()
         {
-            if (G.telegram.is_session_exist == 0)
+            if (G.telegram.is_session_exist == 1)
             {
-                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+                txt_message.Text = "در حال بررسی ارتباط با سرور تلگرام ...";
+                checkTelegramAuth();
             }
             else
             {
-                checkTelegramAuth();
+                Mouse.OverrideCursor = previousCursor;
+                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
             }
         }
 
@@ -134,15 +147,23 @@ namespace Telbot.Pages.Authentications
 
         private void on_telegram_auth_checked(object sender, EventArgs e)
         {
+           
+
             TelegramResponse res = (TelegramResponse)sender;
             if (res.status == 1)
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 Window.GetWindow(this).Close();
+
+                Mouse.OverrideCursor = previousCursor;
+
             }
             else
             {
+                Mouse.OverrideCursor = previousCursor;
+                FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
+                _dialog.ShowDialog();
                 this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
             }
         }

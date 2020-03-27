@@ -1,0 +1,21 @@
+﻿<Window x:Class="Telbot.Dialogs.ProgressDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ProgressDialog"
+        Height="200" Width="300" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" BorderThickness="1" BorderBrush="#1f1f1f"
+        ContentRendered="Window_ContentRendered"
+        >
+    <DockPanel MouseDown="DockPanel_MouseDown">
+        <Border DockPanel.Dock="Top" Height="30" Background="#FF0AAFF1" BorderBrush="Transparent" >
+            <Label FlowDirection="RightToLeft" VerticalAlignment="Center">لطفا منتظر بمانید ...</Label>
+        </Border>
+
+        <Grid>
+            <ProgressBar x:Name="pb_process" Minimum="0" Maximum="100"  Height="15" />
+            <TextBlock Text="{Binding ElementName=pb_process, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </DockPanel>
+    
+</Window>

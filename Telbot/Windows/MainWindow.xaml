@@ -1,8 +1,172 @@
 ﻿<Window x:Class="Telbot.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="300" Width="300">
-    <Grid>
+        Icon="../ic_app.ico"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Title="MainWindow" Height="600" Width="1200" FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL"
+        Loaded="Window_Loaded"
         
-    </Grid>
+        >
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" FlowDirection="RightToLeft" Height="22" VerticalContentAlignment="Center">
+            <MenuItem Header="حساب کاربری">
+                <MenuItem Header="خروچ از حساب کاربری" />
+                <MenuItem Header=" خروچ از حساب کاربری تلگرام" />
+            </MenuItem>
+            <MenuItem Header="تنظیمات">
+
+            </MenuItem>
+            <MenuItem Header="خرید اشتراک">
+
+            </MenuItem>
+            <MenuItem Header="درباره ما">
+
+            </MenuItem>
+        </Menu>
+        <Grid FlowDirection="RightToLeft">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Column="0" >
+
+                <ListView Margin="0,0,0,0" x:Name="lst_contacts"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0">
+                    <Label  Content="لیست مخاطبین" HorizontalContentAlignment="Left" HorizontalAlignment="Left" BorderThickness="0"></Label>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+            </Grid>
+            <GridSplitter Grid.Column="0" Width="5" VerticalAlignment="Stretch"></GridSplitter>
+            <Grid Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                <StackPanel Orientation="Vertical">
+                                    <Button x:Name="btn_browse" HorizontalAlignment="Left" Style="{StaticResource BtnLarge}" Width="120px" Height="30px" Margin="0,5,5,0" Click="btn_browse_Click">انتخاب لیست شماره ها</Button>
+
+                                </StackPanel>
+                                <Button x:Name="btn_add_to_database" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource BtnLarge}" Width="120px" Height="30px"  Margin="5,5,0,0" Click="btn_add_to_database_Click" >افزودن به پایگاه داده</Button>
+                            </StackPanel>
+                            <Label HorizontalAlignment="Left" x:Name="lbl_filepath"></Label>
+                            <Label  Content="لیست  شماره ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left" BorderThickness="0" Margin="0,5,0,0"></Label>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+
+
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <Label Content="فیلتر"></Label>
+                                <StackPanel>
+                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right">نام:</TextBlock>
+                                    <TextBox x:Name="inp_name" Style="{StaticResource InputBox}" Height="25" VerticalAlignment="Top" Width="90" FontSize="12"  HorizontalContentAlignment="Center"></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="3,0,0,0">
+                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right">نام خانوادگی:</TextBlock>
+                                    <TextBox x:Name="inp_lastname" Style="{StaticResource InputBox}" Height="25" VerticalAlignment="Top" Width="90" FontSize="12" HorizontalContentAlignment="Center"></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="3,0,0,0">
+                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right">شماره تلفن :</TextBlock>
+                                    <TextBox x:Name="inp_number" Style="{StaticResource InputBox}" Height="25" VerticalAlignment="Top" Width="90" FontSize="12" PreviewTextInput="inp_number_PreviewTextInput" ></TextBox>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
+
+
+                                <StackPanel Margin="3,0,0,0">
+                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"> از شماره :</TextBlock>
+                                    <TextBox x:Name="inp_number_from" Style="{StaticResource InputBox}" Height="25" VerticalAlignment="Top" Width="90" FontSize="12" PreviewTextInput="inp_number_PreviewTextInput" ></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="3,0,0,0">
+                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"> تا شماره :</TextBlock>
+                                    <TextBox x:Name="inp_number_to" Style="{StaticResource InputBox}" Height="25" VerticalAlignment="Top" Width="90" FontSize="12" PreviewTextInput="inp_number_PreviewTextInput" ></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="3,0,0,0">
+                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"></TextBlock>
+                                    <Button Style="{StaticResource BtnLarge}" Content="اعمال" Height="25" Width="90" Margin="0,0,0,0"></Button>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+
+                </Grid>
+                <Grid Grid.Row="1" >
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15px"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" VerticalAlignment="Bottom" Background="#e8e8e8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center">ردیف</TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center">نام</TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">نام خانوادگی</TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center">شماره تلفن</TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="4">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="-13,0,0,0">همه</TextBlock>
+                                <CheckBox x:Name="chk_all" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="LeftToRight" Margin="2,0,0,0" Click="chk_all_Click"></CheckBox>
+                            </StackPanel>
+
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ListView Margin="0,0,0,0" x:Name="lst_numbers"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" Columns="1"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" >
+                    <Button x:Name="btn_add_member_to_group" Style="{StaticResource BtnLarge}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="6,3,6,3"  Content="افزودن لیست موجود به گروه" Width="Auto" Click="btn_add_member_to_group_Click"></Button>
+                </Grid>
+            </Grid>
+            <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch"></GridSplitter>
+            <Grid Column="2">
+                <ListView Margin="0,0,0,0" x:Name="lst_groups"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0" SelectionChanged="lst_groups_SelectionChanged">
+                    <Label  Content="لیست گروه ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left" BorderThickness="0"></Label>
+
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+            </Grid>
+        </Grid>
+    </DockPanel>
+
 </Window>

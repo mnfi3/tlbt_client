@@ -127,7 +127,7 @@ namespace Telbot.helper
             xlWorkBook = xlApp.Workbooks.Open(location, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            int row_count = 0;
+            double row_count = 0;
             int column_count = 0;
 
             range = xlWorkSheet.UsedRange;
@@ -136,7 +136,7 @@ namespace Telbot.helper
 
             string str = "";
 
-            for (int row = 1; row <= row_count; row++)
+            for (double row = 1; row <= row_count; row++)
             {
                 Mobile_model mobile = new Mobile_model(); ;
                 for (int column = 1; column <= column_count; column++)
@@ -178,7 +178,7 @@ namespace Telbot.helper
                 {
                     db.saveMobile(mobile);
                 }
-                int percent = row / row_count * 100;
+                double percent = row / row_count * 100;
                 handler(percent, new EventArgs());
             }
 

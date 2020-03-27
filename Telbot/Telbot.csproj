@@ -114,12 +114,24 @@
     <Compile Include="Dialogs\FailedDialog.xaml.cs">
       <DependentUpon>FailedDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ProgressDialog.xaml.cs">
+      <DependentUpon>ProgressDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SuccessfullDialog.xaml.cs">
       <DependentUpon>SuccessfullDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="helper\CountryCode_helper.cs" />
     <Compile Include="helper\DB_helper.cs" />
     <Compile Include="helper\Excel_helper.cs" />
+    <Compile Include="Items\ItemContact.xaml.cs">
+      <DependentUpon>ItemContact.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Items\ItemGroup.xaml.cs">
+      <DependentUpon>ItemGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Items\ItemNumber.xaml.cs">
+      <DependentUpon>ItemNumber.xaml</DependentUpon>
+    </Compile>
     <Compile Include="model\Mobile_model.cs" />
     <Compile Include="model\Setting_model.cs" />
     <Compile Include="model\Telegram_model.cs" />
@@ -147,6 +159,7 @@
     <Compile Include="helper\Mobile_helper.cs" />
     <Compile Include="storage\Setting_pref.cs" />
     <Compile Include="telegram\Auth_telegram.cs" />
+    <Compile Include="telegram\Contact_telegram.cs" />
     <Compile Include="telegram\TelegramResponse.cs" />
     <Compile Include="TeleSharpcs.cs" />
     <Compile Include="Windows\AuthenticationWindow.xaml.cs">
@@ -163,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Dialogs\ProgressDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\SuccessfullDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -174,6 +191,18 @@
     </Compile>
     <Compile Include="license\Crypt.cs" />
     <Compile Include="license\DynamicTokenManager.cs" />
+    <Page Include="Items\ItemContact.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Items\ItemGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Items\ItemNumber.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Authentications\EnterCode.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

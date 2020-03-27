@@ -24,7 +24,7 @@ using TeleSharp.TL.Account;
 using TeleSharp.TL.Channels;
 using System.Windows;
 
-namespace AddMemberBot
+namespace Telbot
 {
     class TeleSharpcs
     {

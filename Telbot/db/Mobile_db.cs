@@ -21,7 +21,7 @@ namespace Telbot.db
                 {
                     mobile = new Mobile_model();
                     mobile.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
-                    mobile.number = dataReader.GetString(dataReader.GetOrdinal("number"));
+                    mobile.number = dataReader.GetDouble(dataReader.GetOrdinal("number")).ToString();
                     mobile.first_name = dataReader.GetString(dataReader.GetOrdinal("first_name"));
                     mobile.last_name = dataReader.GetString(dataReader.GetOrdinal("last_name"));
 
@@ -102,7 +102,7 @@ namespace Telbot.db
             Mobile_model mobile = null;
             values.Clear();
             values.Add("@number", number);
-            SQLiteDataReader dataReader = db.select("select * from mobiles where number = @number");
+            SQLiteDataReader dataReader = db.select("select * from mobiles where number like @number", values);
             if (dataReader != null)
             {
                 while (dataReader.Read())
@@ -110,16 +110,17 @@ namespace Telbot.db
 
                     mobile = new Mobile_model();
                     mobile.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
-                    mobile.number = dataReader.GetString(dataReader.GetOrdinal("number"));
+                    mobile.number = dataReader.GetDouble(dataReader.GetOrdinal("number")).ToString();
                     mobile.first_name = dataReader.GetString(dataReader.GetOrdinal("first_name"));
                     mobile.last_name = dataReader.GetString(dataReader.GetOrdinal("last_name"));
-                    break;
 
                 }
             }
+           
 
             db.close();
             return mobile;
+            
         }
     }
 }
