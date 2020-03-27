@@ -40,3 +40,4 @@ C:\dev\c_charp\Telbot\Telbot\obj\Release\Windows\AuthenticationWindow.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Windows\MainWindow.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Pages\Authentications\License.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Pages\Authentications\License.g.cs
+C:\dev\c_charp\Telbot\Telbot\obj\Release\App.baml

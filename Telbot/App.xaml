@@ -3,6 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="Windows/AuthenticationWindow.xaml">
     <Application.Resources>
-         
+
+
+        <Style x:Key="BtnLarge" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="40px"/>
+            <Setter Property="Width" Value="100px"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="BorderBrush" Value="Red"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF363535"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+
+        <Style x:Key="InputBox" TargetType="{x:Type Control}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Height" Value="50px"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+            <Setter Property="BorderBrush" Value="#FF060606"/>
+        </Style>
     </Application.Resources>
 </Application>

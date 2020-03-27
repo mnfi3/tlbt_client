@@ -146,6 +146,8 @@
     <Compile Include="storage\App_pref.cs" />
     <Compile Include="helper\Mobile_helper.cs" />
     <Compile Include="storage\Setting_pref.cs" />
+    <Compile Include="telegram\Auth_telegram.cs" />
+    <Compile Include="telegram\TelegramResponse.cs" />
     <Compile Include="TeleSharpcs.cs" />
     <Compile Include="Windows\AuthenticationWindow.xaml.cs">
       <DependentUpon>AuthenticationWindow.xaml</DependentUpon>

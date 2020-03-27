@@ -48,6 +48,7 @@ namespace Telbot.Pages.Authentications
             {
                 previousCursor = Mouse.OverrideCursor;
                 Mouse.OverrideCursor = Cursors.Wait;
+
                 App_service service = new App_service();
                 service.login(txt_user_name.Text, txt_password.Password, login_completed);
             }
@@ -61,6 +62,7 @@ namespace Telbot.Pages.Authentications
         private void login_completed(object sender, EventArgs e)
         {
             Mouse.OverrideCursor = previousCursor;
+
             App_model app = (App_model) sender;
             if (app.id > 0)
             {

@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Telbot.Dialogs;
+using Telbot.system;
+using Telbot.telegram;
 
 namespace Telbot.Pages.Authentications
 {
@@ -24,10 +27,13 @@ namespace Telbot.Pages.Authentications
     {
         DispatcherTimer countdown;
         TimeSpan time;
+        private Cursor previousCursor;
+
+        private static readonly Regex _regex = new Regex("[^0-9.-]+");
         public EnterCode()
         {
             InitializeComponent();
-            time = TimeSpan.FromSeconds(5);
+            time = TimeSpan.FromSeconds(120);
             countdown = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 txt_second.Text = time.ToString(@"mm\:ss");
@@ -44,8 +50,89 @@ namespace Telbot.Pages.Authentications
             }, Application.Current.Dispatcher);
 
             countdown.Start(); 
+
+
+
+
         }
-        private static readonly Regex _regex = new Regex("[^0-9.-]+");
+
+        private void btn_confirm_code_click(object sender, RoutedEventArgs e)
+        {
+            if (inp_code.Text.Length < 1)
+            {
+                FailedDialog _dialog = new FailedDialog("کد تایید را وارد کنید");
+                _dialog.ShowDialog();
+                return;
+            }
+
+            previousCursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = Cursors.Wait;
+
+            verifyCode();
+        }
+
+        private async void  verifyCode(){
+            Auth_telegram auth = new Auth_telegram();
+            await auth.verifyCode(on_code_verified, G.telegram.hash, inp_code.Text);
+        }
+
+        private void on_code_verified(object sender, EventArgs e)
+        {
+            Mouse.OverrideCursor = previousCursor;
+
+            TelegramResponse res = (TelegramResponse)sender;
+            if (res.status == 1)
+            {
+                previousCursor = Mouse.OverrideCursor;
+                Mouse.OverrideCursor = Cursors.Wait;
+
+                checkTelegramAuth();
+            }
+            else if (res.status == 2)
+            {
+                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterTwoStepVerificationPassword.xaml", UriKind.Relative));
+            }
+            else if (res.status == 0)
+            {
+                FailedDialog _dialog = new FailedDialog(res.message);
+                _dialog.ShowDialog();
+            }
+        }
+
+
+        private async void checkTelegramAuth()
+        {
+            Auth_telegram auth = new Auth_telegram();
+            await auth.isUserAuthorized(on_telegram_auth_checked);
+        }
+
+        private void on_telegram_auth_checked(object sender, EventArgs e)
+        {
+            Mouse.OverrideCursor = previousCursor;
+
+            TelegramResponse res = (TelegramResponse)sender;
+            if (res.status == 1)
+            {
+                SuccessfullDialog _dialog = new SuccessfullDialog(res.message);
+                _dialog.ShowDialog();
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Window.GetWindow(this).Close();
+            }
+            else
+            {
+                FailedDialog _dialog = new FailedDialog(res.message);
+                _dialog.ShowDialog();
+                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+            }
+        }
+
+
+
+
+
+       
         private static bool IsTextAllowed(string text)
         {
             return !_regex.IsMatch(text);
@@ -71,10 +158,7 @@ namespace Telbot.Pages.Authentications
             }
 
         }
-        private void btn_confirm_code_click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterTwoStepVerificationPassword.xaml", UriKind.Relative));
-        }
+      
         private void btn_edit_number_click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("/Pages/Authentications/EnterNumber.xaml", UriKind.Relative));
@@ -82,7 +166,7 @@ namespace Telbot.Pages.Authentications
 
         private void txt_send_code_again_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            this.NavigationService.Navigate(new Uri("/Pages/Authentications/EnterNumber.xaml", UriKind.Relative));
         }
     }
 }

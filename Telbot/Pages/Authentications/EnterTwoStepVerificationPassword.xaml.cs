@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Telbot.Dialogs;
+using Telbot.telegram;
 
 namespace Telbot.Pages.Authentications
 {
@@ -20,18 +22,82 @@ namespace Telbot.Pages.Authentications
     /// </summary>
     public partial class EnterTwoStepVerificationPassword : Page
     {
+
+        private Cursor previousCursor;
         public EnterTwoStepVerificationPassword()
         {
             InitializeComponent();
         }
 
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Window.GetWindow(this).Close();
-            
+            if (txt_password.Password.Length < 1)
+            {
+                FailedDialog _dialog = new FailedDialog("لطفا رمز عبور را وارد کنید");
+                _dialog.ShowDialog();
+                return;
+            }
+            previousCursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = Cursors.Wait;
+
+            verifyPassword();
+        }
+
+        private async void verifyPassword()
+        {
+            Auth_telegram auth = new Auth_telegram();
+            await auth.verifyTwoStepPassword(on_password_verified, txt_password.Password);
+        }
+
+        private void on_password_verified(object sender, EventArgs e)
+        {
+            Mouse.OverrideCursor = previousCursor;
+
+            TelegramResponse res = (TelegramResponse) sender;
+            if (res.status == 1)
+            {
+                previousCursor = Mouse.OverrideCursor;
+                Mouse.OverrideCursor = Cursors.Wait;
+
+                checkTelegramAuth();
+            }
+            else
+            {
+                FailedDialog _dialog = new FailedDialog(res.message);
+                _dialog.ShowDialog();
+            }
+        }
+
+
+
+        private async void checkTelegramAuth()
+        {
+            Auth_telegram auth = new Auth_telegram();
+            await auth.isUserAuthorized(on_telegram_auth_checked);
+        }
+
+        private void on_telegram_auth_checked(object sender, EventArgs e)
+        {
+            Mouse.OverrideCursor = previousCursor;
+
+            TelegramResponse res = (TelegramResponse)sender;
+            if (res.status == 1)
+            {
+                SuccessfullDialog _dialog = new SuccessfullDialog(res.message);
+                _dialog.ShowDialog();
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Window.GetWindow(this).Close();
+            }
+            else
+            {
+                FailedDialog _dialog = new FailedDialog(res.message);
+                _dialog.ShowDialog();
+                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+            }
         }
     }
 }

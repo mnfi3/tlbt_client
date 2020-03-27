@@ -215,7 +215,7 @@ namespace Telbot.helper
             codes.Add("Singapore", "65");
             codes.Add("Sint Maarten", "1-721");
             codes.Add("Slovakia", "421");
-            codes.Add("Slovenia", "386");
+            //codes.Add("Slovenia", "386");
             codes.Add("Solomon Islands", "677");
             codes.Add("Somalia", "252");
             codes.Add("South Africa", "27");

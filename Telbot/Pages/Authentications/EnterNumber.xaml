@@ -90,7 +90,7 @@
                     <ComboBox Background="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  BorderBrush="DarkRed" x:Name="country_code" FontSize="20">
 
                     </ComboBox>
-                    <TextBox Style="{StaticResource InputBox}" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting ="TextBoxPasting" Width="300"></TextBox>
+                    <TextBox Name="txt_mobile" Style="{StaticResource InputBox}" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting ="TextBoxPasting" Width="300" MaxLength="10"></TextBox>
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal">

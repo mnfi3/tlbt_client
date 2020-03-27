@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,6 +21,7 @@ using Telbot.license;
 using Telbot.model;
 using Telbot.storage;
 using Telbot.system;
+using Telbot.telegram;
 
 namespace Telbot.Pages.Authentications
 {
@@ -82,7 +84,8 @@ namespace Telbot.Pages.Authentications
                 //time token is ok
                 if (manager.checkTokenValidity(app.time_token))
                 {
-                    this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+                    //checkTelegramAuth();
+                    checkTelegramSession();
                 }
                 //time token not ok
                 else
@@ -105,6 +108,42 @@ namespace Telbot.Pages.Authentications
                 _dialog.ShowDialog();
                 btn_check_again.Visibility = Visibility;
 
+            }
+        }
+
+
+        private void checkTelegramSession()
+        {
+            if (G.telegram.is_session_exist == 0)
+            {
+                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+            }
+            else
+            {
+                checkTelegramAuth();
+            }
+        }
+
+
+
+        private async void checkTelegramAuth()
+        {
+            Auth_telegram auth = new Auth_telegram();
+            await auth.isUserAuthorized(on_telegram_auth_checked);
+        }
+
+        private void on_telegram_auth_checked(object sender, EventArgs e)
+        {
+            TelegramResponse res = (TelegramResponse)sender;
+            if (res.status == 1)
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Window.GetWindow(this).Close();
+            }
+            else
+            {
+                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
             }
         }
 

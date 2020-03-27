@@ -4,7 +4,8 @@
         Title="EnterConfiguration"
         Height="300" Width="400"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" Icon="/Telbot;component/ic_app.ico">
+        FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" Icon="/Telbot;component/ic_app.ico"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Height" Value="40px"/>
@@ -57,18 +58,18 @@
     <Grid>
         <StackPanel>
             <TextBlock FlowDirection="RightToLeft">
-                توجه: باید   api_id و api_hash حساب تلگرام شما وارد شود.
+                توجه: باید   api_id و api_hash حساب  وارد شود.
             </TextBlock>
             <TextBlock FlowDirection="RightToLeft">
                 
-                برای دریافت  و  به این 
+                برای دریافت    به این 
                 <Hyperlink NavigateUri="https://my.telegram.org" Click="Hyperlink_Click">لینک</Hyperlink>
                 مراجعه کنید
             </TextBlock>
-            <Label Content="api hash:" Margin="47,0,46.6,0" />
-            <TextBox x:Name="api_hash" Style="{StaticResource InputBox}"   Width="300"></TextBox>
             <Label Content="api id:" Margin="47,20,46.6,0" />
-            <TextBox x:Name="api_id" Style="{StaticResource InputBox}"   Width="300"></TextBox>
+            <TextBox x:Name="txt_api_id" Style="{StaticResource InputBox}"   Width="300"></TextBox>
+            <Label Content="api hash:" Margin="47,0,46.6,0" />
+            <TextBox x:Name="txt_api_hash" Style="{StaticResource InputBox}"   Width="300"></TextBox>
             <Button Content="اعمال تغییرات" Margin="0,30,15,0" Click="btn_set_configuration"></Button>
         </StackPanel>
     </Grid>
