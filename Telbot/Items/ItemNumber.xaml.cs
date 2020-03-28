@@ -22,7 +22,7 @@ namespace Telbot.Items
     public partial class ItemNumber : UserControl
     {
 
-        private Mobile_model mobile;
+        public Mobile_model mobile;
         private int row;
         public ItemNumber(int row, Mobile_model mobile)
         {

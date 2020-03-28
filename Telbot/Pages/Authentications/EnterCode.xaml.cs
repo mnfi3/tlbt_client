@@ -71,9 +71,9 @@ namespace Telbot.Pages.Authentications
             verifyCode();
         }
 
-        private async void  verifyCode(){
+        private void  verifyCode(){
             Auth_telegram auth = new Auth_telegram();
-            await auth.verifyCode(on_code_verified, G.telegram.hash, inp_code.Text);
+            auth.verifyCode(on_code_verified, G.telegram.hash, inp_code.Text);
         }
 
         private void on_code_verified(object sender, EventArgs e)
@@ -100,10 +100,10 @@ namespace Telbot.Pages.Authentications
         }
 
 
-        private async void checkTelegramAuth()
+        private void checkTelegramAuth()
         {
             Auth_telegram auth = new Auth_telegram();
-            await auth.isUserAuthorized(on_telegram_auth_checked);
+            auth.isUserAuthorized(on_telegram_auth_checked);
         }
 
         private void on_telegram_auth_checked(object sender, EventArgs e)

@@ -45,10 +45,10 @@ namespace Telbot.Pages.Authentications
             verifyPassword();
         }
 
-        private async void verifyPassword()
+        private void verifyPassword()
         {
             Auth_telegram auth = new Auth_telegram();
-            await auth.verifyTwoStepPassword(on_password_verified, txt_password.Password);
+            auth.verifyTwoStepPassword(on_password_verified, txt_password.Password);
         }
 
         private void on_password_verified(object sender, EventArgs e)
@@ -72,10 +72,10 @@ namespace Telbot.Pages.Authentications
 
 
 
-        private async void checkTelegramAuth()
+        private void checkTelegramAuth()
         {
             Auth_telegram auth = new Auth_telegram();
-            await auth.isUserAuthorized(on_telegram_auth_checked);
+            auth.isUserAuthorized(on_telegram_auth_checked);
         }
 
         private void on_telegram_auth_checked(object sender, EventArgs e)

@@ -123,6 +123,9 @@
     <Compile Include="helper\CountryCode_helper.cs" />
     <Compile Include="helper\DB_helper.cs" />
     <Compile Include="helper\Excel_helper.cs" />
+    <Compile Include="Items\CircleProgress.xaml.cs">
+      <DependentUpon>CircleProgress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Items\ItemContact.xaml.cs">
       <DependentUpon>ItemContact.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,8 @@
     <Compile Include="helper\Mobile_helper.cs" />
     <Compile Include="storage\Setting_pref.cs" />
     <Compile Include="telegram\Auth_telegram.cs" />
+    <Compile Include="telegram\Base_telegram.cs" />
+    <Compile Include="telegram\Channel_telegram.cs" />
     <Compile Include="telegram\Contact_telegram.cs" />
     <Compile Include="telegram\TelegramResponse.cs" />
     <Compile Include="TeleSharpcs.cs" />
@@ -191,6 +196,10 @@
     </Compile>
     <Compile Include="license\Crypt.cs" />
     <Compile Include="license\DynamicTokenManager.cs" />
+    <Page Include="Items\CircleProgress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Items\ItemContact.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

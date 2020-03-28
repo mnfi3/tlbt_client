@@ -24,6 +24,8 @@ using Telbot.model;
 using Telbot.system;
 using Telbot.telegram;
 using TeleSharp.TL;
+using Newtonsoft.Json;
+using TeleSharp.TL.Contacts;
 
 namespace Telbot
 {
@@ -34,6 +36,7 @@ namespace Telbot
     {
 
         string file_path = "";
+        TLChannel selected_channel = null;
             
         public List<ItemNumber> tempListOfItem = new List<ItemNumber>();
 
@@ -42,109 +45,130 @@ namespace Telbot
         public MainWindow()
         {
             InitializeComponent();
-            //tl.AuthUser();
-            //tl.SendMessageTest();
-            //tl.addMemmberTest();
-            Random random = new Random();
-            //for (int i = 0; i <= 20; i++)
-            //{
-            //    ItemContact lstItem = new ItemContact();
-            //    byte r = (byte)random.Next(20, 220);
-            //    byte g = (byte)random.Next(20, 220);
-            //    byte b = (byte)random.Next(20, 220);
-
-            //    lstItem.Background = new SolidColorBrush(Color.FromArgb(110, r, g, b));
-
-            //    lst_contacts.Items.Add(lstItem);
-            //}
-            Random random2 = new Random();
-            for (int i = 0; i <= 20; i++)
-            {
-                ItemGroup lstItem = new ItemGroup();
-                byte r = (byte)random2.Next(20, 220);
-                byte g = (byte)random2.Next(20, 220);
-                byte b = (byte)random2.Next(20, 220);
-
-                lstItem.Background = new SolidColorBrush(Color.FromArgb(110, r, g, b));
-
-                lst_groups.Items.Add(lstItem);
-            }
-
-            //for (int i = 0; i <= 50; i++)
-            //{
-            //    ItemNumber itemNumber2 = new ItemNumber(updateCheckBox);
-            //    lst_numbers.Items.Add(itemNumber2);
-            //    tempListOfItem.Add(itemNumber2);
-            //}
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            loadNumbers();
             loadContacts();
+            //loadChannels();
+            //loadNumbers();
         }
 
 
-        private async void loadNumbers()
+
+        //---------------------------------------------mobiles---------------------------------------------------
+        private void loadMobiles()
         {
             Mobile_db db = new Mobile_db();
             List<Mobile_model> mobiles = db.getMobiles();
+            setMobiles(mobiles);
+        }
+
+        private async void setMobiles(List<Mobile_model> mobiles)
+        {
+            prg_numbers.Visibility = Visibility.Visible;
+            lst_numbers.Items.Clear();
             ItemNumber _item;
 
-            await this.Dispatcher.InvokeAsync((Action)(() =>
-            {
+            
                 int i = 0;
                 foreach (Mobile_model mobile in mobiles)
                 {
                     _item = new ItemNumber(++i, mobile);
                     lst_numbers.Items.Add(_item);
+                    await Task.Delay(1);
                 }
-            }));
-            
+            prg_numbers.Visibility = Visibility.Collapsed;
+
         }
 
-        private async void loadContacts()
+        private void searchNumbers(string search, string from, string to, string first_name, string last_name)
+        {
+            Mobile_db db = new Mobile_db();
+            List<Mobile_model> mobiles = db.searchMobiles(search, from, to, first_name, last_name);
+            setMobiles(mobiles);
+        }
+
+
+        //---------------------------------------------contacts---------------------------------------------------
+        private void loadContacts()
         {
             Contact_telegram contact = new Contact_telegram();
-            await contact.getContacts(on_contacts_received);
+            contact.getContacts(on_contacts_received);
         }
 
         private void on_contacts_received(object sender, EventArgs e)
         {
+            prg_contact.Visibility = Visibility.Collapsed;
             TelegramResponse res = (TelegramResponse)sender;
             List<TLUser> users = (List<TLUser>)res.data;
-            //ItemContact _item;
-
-            //foreach (TLUser user in users)
-            //{
-            //    _item = new ItemContact(user);
-            //    lst_contacts.Items.Add(_item);
-            //}
             setContacts(users);
+
+            loadChannels();
         }
 
         private async void setContacts(List<TLUser> users)
         {
             Random random = new Random();
-            await this.Dispatcher.InvokeAsync((Action)(() =>
+            ItemContact _item = null;
+            foreach (TLUser user in users)
             {
-                ItemContact _item = null;
-                foreach (TLUser user in users)
-                {
-                    byte r = (byte)random.Next(20, 220);
-                    byte g = (byte)random.Next(20, 220);
-                    byte b = (byte)random.Next(20, 220);
+                byte r = (byte)random.Next(20, 220);
+                byte g = (byte)random.Next(20, 220);
+                byte b = (byte)random.Next(20, 220);
 
-                    _item = new ItemContact(user);
-                    _item.Background = new SolidColorBrush(Color.FromArgb(110, r, g, b));
-                    lst_contacts.Items.Add(_item);
-                }
-            }));
+                _item = new ItemContact(user);
+                _item.Background = new SolidColorBrush(Color.FromArgb(110, r, g, b));
+                lst_contacts.Items.Add(_item);
+                await Task.Delay(1);
+            }
+            //MessageBox.Show("setted");
+
+
+        }
+
+        //---------------------------------------------channels---------------------------------------------------
+        private  void loadChannels()
+        {
+            Channel_telegram channel = new Channel_telegram();
+            channel.getChannels(on_channels_received);
+        }
+
+        private void on_channels_received(object sender, EventArgs e)
+        {
+            prg_channel.Visibility = Visibility.Collapsed;
+            TelegramResponse res = (TelegramResponse)sender;
+            List<TLChannel> channels = (List<TLChannel>)res.data;
+            setChannels(channels);
+        }
+
+        private async void setChannels(List<TLChannel> channels)
+        {
+            prg_channel.Visibility = Visibility.Visible;
+            Random random = new Random();
+            ItemGroup _item = null;
+            foreach (TLChannel channel in channels)
+            {
+                byte r = (byte)random.Next(20, 220);
+                byte g = (byte)random.Next(20, 220);
+                byte b = (byte)random.Next(20, 220);
+
+                _item = new ItemGroup(channel);
+
+                _item.Background = new SolidColorBrush(Color.FromArgb(110, r, g, b));
+                lst_groups.Items.Add(_item);
+                await Task.Delay(1);
+            }
+
+            prg_channel.Visibility = Visibility.Collapsed;
         }
 
        
         
+
+
+
+
         private static bool IsTextAllowed(string text)
         {
             return !_regex.IsMatch(text);
@@ -190,14 +214,56 @@ namespace Telbot
             ItemGroup item = (ItemGroup)(sender as ListView).SelectedItem;     
             if (item != null)
             {
+                selected_channel = item.channel;
                 btn_add_member_to_group.Content = " افزودن لیست موجود به گروه " + item.txt_title.Text ; 
             }
         }
 
+
+
+        //---------------------------------------------add to group---------------------------------------------------
+
         private void btn_add_member_to_group_Click(object sender, RoutedEventArgs e)
         {
+            TLVector<TLInputPhoneContact> contacts = new TLVector<TLInputPhoneContact>();
+            TLInputPhoneContact contact;
+            foreach (var item in lst_numbers.Items.OfType<ItemNumber>())
+            {
+                if (!(bool)item.chk_num.IsChecked) continue;
+
+                string first_name = (item.mobile.first_name.Length > 0) ? item.mobile.first_name : item.mobile.number;
+                contact = new TLInputPhoneContact() { FirstName=item.mobile.first_name, LastName = item.mobile.last_name, Phone = item.mobile.number};
+                contacts.Add(contact);
+            }
+
+            if(contacts.Count == 0)
+            {
+                FailedDialog _dialog = new FailedDialog("هیچ شماره ای انتخاب نشده است");
+                _dialog.Show();
+                return;
+            }
+
+            if (selected_channel == null)
+            {
+                FailedDialog _dialog = new FailedDialog("هیچ کانال یا گروهی انتخاب نشده است");
+                _dialog.Show();
+                return;
+            }
+
+
+            Contact_telegram tel = new Contact_telegram();
+            tel.addNumberToChannel(on_contacts_added, contacts, selected_channel);
             
         }
+
+        private void on_contacts_added(object sender, EventArgs e) 
+        {
+            TelegramResponse res = (TelegramResponse)sender;
+            List<TLUser> added_users = (List<TLUser>)res.data;
+            MessageBox.Show("تعداد افراد افزوده شده به چت = " + added_users.Count.ToString());
+        }
+
+
 
         private void btn_add_to_database_Click(object sender, RoutedEventArgs e)
         {
@@ -217,6 +283,14 @@ namespace Telbot
             ProgressDialog _dialog = new ProgressDialog(file_path);
             _dialog.Show();
         }
+
+        private void btn_search_Click(object sender, RoutedEventArgs e)
+        {
+            searchNumbers(inp_number.Text, inp_number_from.Text, inp_number_to.Text, inp_name.Text, inp_lastname.Text);
+        }
+
+
+
 
         
 

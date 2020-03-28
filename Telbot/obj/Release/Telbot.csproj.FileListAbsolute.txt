@@ -49,3 +49,7 @@ C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.csproj.GenerateResource.Cache
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.exe
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.pdb
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.csprojResolveAssemblyReference.cache
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Items\CircleProgress.baml
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Items\CircleProgress.g.cs
+C:\dev\c_charp\Telbot\Telbot\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot_MarkupCompile.lref

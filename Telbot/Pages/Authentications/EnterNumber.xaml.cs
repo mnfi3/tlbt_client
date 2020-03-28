@@ -123,7 +123,7 @@ namespace Telbot.Pages.Authentications
             
         }
 
-        private async void sendCode()
+        private  void sendCode()
         {
             previousCursor = Mouse.OverrideCursor;
             Mouse.OverrideCursor = Cursors.Wait;
@@ -134,7 +134,7 @@ namespace Telbot.Pages.Authentications
             
 
             Auth_telegram auth = new Auth_telegram();
-            await auth.sendVerificationCode(on_verification_code_sent);
+            auth.sendVerificationCode(on_verification_code_sent);
         }
 
         private void on_verification_code_sent(object sender, EventArgs e)

@@ -50,8 +50,8 @@ namespace Telbot.db
 
             if (search.Length > 0)
             {
-                query += " and number like %@search% ";
-                values.Add("@search", search);
+                query += " and number like @search ";
+                values.Add("@search", "%" + search + "%");
             }
             if (from.Length > 0)
             {
@@ -65,13 +65,13 @@ namespace Telbot.db
             }
             if (first_name.Length > 0)
             {
-                query += " and first_name like %@first_name% ";
-                values.Add("@first_name", to);
+                query += " and first_name like @first_name ";
+                values.Add("@first_name", "%" + first_name + "%");
             }
             if (last_name.Length > 0)
             {
-                query += " and last_name like %@last_name% ";
-                values.Add("@last_name", to);
+                query += " and last_name like @last_name ";
+                values.Add("@last_name", "%" + last_name + "%");
             }
 
 
@@ -83,7 +83,7 @@ namespace Telbot.db
                 {
                     mobile = new Mobile_model();
                     mobile.id = dataReader.GetInt32(dataReader.GetOrdinal("id"));
-                    mobile.number = dataReader.GetString(dataReader.GetOrdinal("number"));
+                    mobile.number = dataReader.GetDouble(dataReader.GetOrdinal("number")).ToString();
                     mobile.first_name = dataReader.GetString(dataReader.GetOrdinal("first_name"));
                     mobile.last_name = dataReader.GetString(dataReader.GetOrdinal("last_name"));
 

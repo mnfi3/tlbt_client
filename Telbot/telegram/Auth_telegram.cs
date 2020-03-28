@@ -19,31 +19,37 @@ namespace Telbot.telegram
         public Auth_telegram()
         {
             response = new TelegramResponse();
-            client = newClient();
+            client = Base_telegram.getTelegramClient();
 
         }
 
 
-        private TelegramClient newClient()
-        {
-            if (client != null) return client;
-            if (G.telegram.api_id == 0 || G.telegram.api_hash.Length < 3) return null;
-            try
-            {
-                return new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
-            }
-            catch (MissingApiConfigurationException ex)
-            {
-                FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
-                _dialog.ShowDialog();
-                return null;
-            }
-        }
+        //private TelegramClient newClient()
+        //{
+        //    if (client != null) return client;
+        //    if (G.telegram.api_id == 0 || G.telegram.api_hash.Length < 3) return null;
+        //    try
+        //    {
+        //        return new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
+        //    }
+        //    catch (MissingApiConfigurationException ex)
+        //    {
+        //        FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
+        //        _dialog.ShowDialog();
+        //        return null;
+        //    }
+        //    catch (System.Net.Sockets.SocketException ex)
+        //    {
+        //        FailedDialog _dialog = new FailedDialog("خطا در ارتباط با سرور تلگرام");
+        //        _dialog.ShowDialog();
+        //        return null;
+        //    }
+        //}
 
 
 
 
-        public async Task sendVerificationCode(EventHandler handler)
+        public async void sendVerificationCode(EventHandler handler)
         {
             if (client == null)
             {
@@ -55,26 +61,36 @@ namespace Telbot.telegram
             }
 
             await client.ConnectAsync();
-            var hash = await client.SendCodeRequestAsync(G.telegram.mobile);
-
-            if (hash.Length > 0)
+            try
             {
-                response.status = 1;
-                response.message = "";
-                response.data = hash;
+                var hash = await client.SendCodeRequestAsync(G.telegram.mobile);
+
+                if (hash.Length > 0)
+                {
+                    response.status = 1;
+                    response.message = "";
+                    response.data = hash;
+                }
+                else
+                {
+                    response.status = 0;
+                    response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
+                    response.data = hash;
+                }
             }
-            else
+            catch (Exception e)
             {
                 response.status = 0;
                 response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
-                response.data = hash;
+                response.data = null;
             }
+           
             handler(response, new EventArgs());
         }
 
 
 
-        public async Task verifyCode( EventHandler handler, string hash, string code)
+        public async void verifyCode( EventHandler handler, string hash, string code)
         {
             if (client == null)
             {
@@ -115,7 +131,8 @@ namespace Telbot.telegram
         }
 
 
-        public async Task verifyTwoStepPassword(EventHandler handler, string password){
+        public async void verifyTwoStepPassword(EventHandler handler, string password)
+        {
             if (client == null)
             {
                 response.status = 0;
@@ -145,7 +162,7 @@ namespace Telbot.telegram
         }
 
 
-        public async Task isUserAuthorized(EventHandler handler)
+        public void isUserAuthorized(EventHandler handler)
         {
             if (client == null)
             {

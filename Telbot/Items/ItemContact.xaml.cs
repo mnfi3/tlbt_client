@@ -27,12 +27,13 @@ namespace Telbot.Items
             InitializeComponent();
             this.user = user;
         }
+       
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             txt_fullname.Text = user.FirstName + " " + user.LastName;
             txt_phone.Content = user.Phone;
-            txt_user_name.Content = user.Username;
+            txt_user_name.Content = "@" + user.Username;
         }
     }
 }

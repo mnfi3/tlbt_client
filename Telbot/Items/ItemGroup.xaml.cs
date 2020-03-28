@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeleSharp.TL;
 
 namespace Telbot.Items
 {
@@ -22,11 +23,20 @@ namespace Telbot.Items
     {
         public string title;
         public string username;
-        public ItemGroup()
+        public TLChannel channel; 
+        public ItemGroup(TLChannel channel)
         {
             InitializeComponent();
-            title = txt_title.Text;
-            username = lbl_username.Content.ToString();
+            this.channel = channel;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            txt_title.Text = channel.Title;
+            if (channel.Username != null)
+                lbl_username.Content = "@" + channel.Username;
+            else
+                lbl_username.Content = "";
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿<Window x:Class="Telbot.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:control="clr-namespace:Telbot.Items"
         Icon="../ic_app.ico"
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
         Title="MainWindow" Height="600" Width="1200" FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL"
@@ -31,15 +32,16 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid Column="0" >
-
-                <ListView Margin="0,0,0,0" x:Name="lst_contacts"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0">
-                    <Label  Content="لیست مخاطبین" HorizontalContentAlignment="Left" HorizontalAlignment="Left" BorderThickness="0"></Label>
+                
+                <Label  Content="لیست مخاطبین"  HorizontalContentAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Top" BorderThickness="0"></Label>
+                <ListView Margin="0,30,0,0" x:Name="lst_contacts"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" Columns="1"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                 </ListView>
+                <control:CircleProgress x:Name="prg_contact" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" Width="100" Height="100"/>
             </Grid>
             <GridSplitter Grid.Column="0" Width="5" VerticalAlignment="Stretch"></GridSplitter>
             <Grid Column="1">
@@ -98,7 +100,7 @@
                                 </StackPanel>
                                 <StackPanel Margin="3,0,0,0">
                                     <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"></TextBlock>
-                                    <Button Style="{StaticResource BtnLarge}" Content="اعمال" Height="25" Width="90" Margin="0,0,0,0"></Button>
+                                    <Button Name="btn_search" Click="btn_search_Click"  Style="{StaticResource BtnLarge}" Content="اعمال" Height="25" Width="90" Margin="0,0,0,0"></Button>
                                 </StackPanel>
 
                             </StackPanel>
@@ -141,6 +143,7 @@
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="1">
+                        
                         <ListView Margin="0,0,0,0" x:Name="lst_numbers"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -148,6 +151,7 @@
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
                         </ListView>
+                        <control:CircleProgress x:Name="prg_numbers" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed" Width="100" Height="100"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="2" >
@@ -156,15 +160,15 @@
             </Grid>
             <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch"></GridSplitter>
             <Grid Column="2">
-                <ListView Margin="0,0,0,0" x:Name="lst_groups"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0" SelectionChanged="lst_groups_SelectionChanged">
-                    <Label  Content="لیست گروه ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left" BorderThickness="0"></Label>
-
+                <Label  Content="لیست گروه ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Top" BorderThickness="0"></Label>
+                <ListView Margin="0,30,0,0" x:Name="lst_groups"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0" SelectionChanged="lst_groups_SelectionChanged">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" Columns="1"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                 </ListView>
+                <control:CircleProgress x:Name="prg_channel" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" Width="100" Height="100"/>
             </Grid>
         </Grid>
     </DockPanel>
