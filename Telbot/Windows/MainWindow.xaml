@@ -4,23 +4,23 @@
         xmlns:control="clr-namespace:Telbot.Items"
         Icon="../ic_app.ico"
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
-        Title="MainWindow" Height="600" Width="1200" FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL"
+        Title="" Height="600" Width="1800" FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL"
         Loaded="Window_Loaded"
         
         >
     <DockPanel>
         <Menu DockPanel.Dock="Top" FlowDirection="RightToLeft" Height="22" VerticalContentAlignment="Center">
             <MenuItem Header="حساب کاربری">
-                <MenuItem Header="خروچ از حساب کاربری" />
-                <MenuItem Header=" خروچ از حساب کاربری تلگرام" />
+                <MenuItem Name="txt_app_logout" Click="txt_app_logout_Click" Header="خروچ از حساب کاربری" />
+                <MenuItem Name="txt_telegram_logout" Click="txt_telegram_logout_Click" Header=" خروچ از حساب کاربری تلگرام" />
             </MenuItem>
-            <MenuItem Header="تنظیمات">
+            <MenuItem Name="txt_exit" Click="txt_exit_Click" Header="خروج" >
 
             </MenuItem>
-            <MenuItem Header="خرید اشتراک">
+            <MenuItem Header="خرید اشتراک" Visibility="Collapsed">
 
             </MenuItem>
-            <MenuItem Header="درباره ما">
+            <MenuItem Header="درباره ما" Visibility="Collapsed">
 
             </MenuItem>
         </Menu>
@@ -32,16 +32,17 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid Column="0" >
-                
+
+                <Button Name="btn_refresh_contacts" Click="btn_refresh_contacts_Click" HorizontalAlignment="Right" VerticalAlignment="Top"  Style="{StaticResource BtnLarge}" Content="دریافت مخاطبین" Height="25" Width="90" Margin="0,5,5,0"></Button>
                 <Label  Content="لیست مخاطبین"  HorizontalContentAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Top" BorderThickness="0"></Label>
-                <ListView Margin="0,30,0,0" x:Name="lst_contacts"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0">
+                <ListView Margin="0,40,0,0" x:Name="lst_contacts"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" Columns="1"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                 </ListView>
-                <control:CircleProgress x:Name="prg_contact" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" Width="100" Height="100"/>
+                <control:CircleProgress x:Name="prg_contact" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed" Width="100" Height="100"/>
             </Grid>
             <GridSplitter Grid.Column="0" Width="5" VerticalAlignment="Stretch"></GridSplitter>
             <Grid Column="1">
@@ -65,7 +66,14 @@
                                 <Button x:Name="btn_add_to_database" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource BtnLarge}" Width="120px" Height="30px"  Margin="5,5,0,0" Click="btn_add_to_database_Click" >افزودن به پایگاه داده</Button>
                             </StackPanel>
                             <Label HorizontalAlignment="Left" x:Name="lbl_filepath"></Label>
-                            <Label  Content="لیست  شماره ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left" BorderThickness="0" Margin="0,5,0,0"></Label>
+                            
+
+
+                            <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                                <Label  Content="لیست  شماره ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left" BorderThickness="0" Margin="0,5,0,0"></Label>
+                                <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"></TextBlock>
+                                <Button Name="btn_remove" Click="btn_remove_Click" Background="#FFD83838" Style="{StaticResource BtnLarge}" Content="حذف" Height="25" Width="90" Margin="70,0,0,0"></Button>
+                            </StackPanel>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -100,8 +108,10 @@
                                 </StackPanel>
                                 <StackPanel Margin="3,0,0,0">
                                     <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"></TextBlock>
-                                    <Button Name="btn_search" Click="btn_search_Click"  Style="{StaticResource BtnLarge}" Content="اعمال" Height="25" Width="90" Margin="0,0,0,0"></Button>
+                                    <Button Name="btn_search" Click="btn_search_Click"  Style="{StaticResource BtnLarge}" Content="جستجو" Height="25" Width="90" Margin="0,0,0,0"></Button>
                                 </StackPanel>
+
+                                
 
                             </StackPanel>
                         </StackPanel>
@@ -160,15 +170,16 @@
             </Grid>
             <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch"></GridSplitter>
             <Grid Column="2">
+                <Button Name="btn_refresh_channels" Click="btn_refresh_channels_Click" HorizontalAlignment="Right" VerticalAlignment="Top"  Style="{StaticResource BtnLarge}" Content="دریافت چت ها" Height="25" Width="90" Margin="0,5,5,0"></Button>
                 <Label  Content="لیست گروه ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Top" BorderThickness="0"></Label>
-                <ListView Margin="0,30,0,0" x:Name="lst_groups"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0" SelectionChanged="lst_groups_SelectionChanged">
+                <ListView Margin="0,40,0,0" x:Name="lst_groups"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0" SelectionChanged="lst_groups_SelectionChanged">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" Columns="1"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                 </ListView>
-                <control:CircleProgress x:Name="prg_channel" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible" Width="100" Height="100"/>
+                <control:CircleProgress x:Name="prg_channel" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed" Width="100" Height="100"/>
             </Grid>
         </Grid>
     </DockPanel>

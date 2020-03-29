@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Telbot.system;
 
 namespace Telbot.license
 {
@@ -38,6 +39,7 @@ namespace Telbot.license
             }
             catch (CryptographicException e)
             {
+                Log.e("encrypt failed.error=" + e.ToString(), "Crypt", "DecryptString_128");
                 return "#" + e.ToString(); ;
             }
 
@@ -66,6 +68,7 @@ namespace Telbot.license
             }
             catch (CryptographicException e)
             {
+                Log.e("encrypt failed.error=" + e.ToString(), "Crypt", "EncryptString_128");
                 return "#";
             }
         }
@@ -138,6 +141,7 @@ namespace Telbot.license
             }
             catch (CryptographicException e)
             {
+                Log.e("encrypt failed.error=" + e.ToString(), "Crypt", "EncryptString_256");
                 return "#";
             }
         }
@@ -192,6 +196,7 @@ namespace Telbot.license
                 }
                 catch (CryptographicException e)
                 {
+                    Log.e("encrypt failed.error=" + e.ToString(), "Crypt", "DecryptString_256");
                     return "#";
                 }
                 finally
@@ -206,7 +211,7 @@ namespace Telbot.license
             }
             catch (CryptographicException e)
             {
-                MessageBox.Show(e.ToString());
+                Log.e("encrypt failed.error=" + e.ToString(), "Crypt", "DecryptString_256");
                 return "#";
             }
         }

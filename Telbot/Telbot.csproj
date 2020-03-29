@@ -108,8 +108,14 @@
     <Compile Include="db\DB.cs" />
     <Compile Include="db\Mobile_db.cs" />
     <Compile Include="db\Base_db.cs" />
+    <Compile Include="Dialogs\MessageDialog.xaml.cs">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\EnterConfiguration.xaml.cs">
       <DependentUpon>EnterConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ConfirmDialog.xaml.cs">
+      <DependentUpon>ConfirmDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\FailedDialog.xaml.cs">
       <DependentUpon>FailedDialog.xaml</DependentUpon>
@@ -173,7 +179,15 @@
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialogs\MessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\EnterConfiguration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ConfirmDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

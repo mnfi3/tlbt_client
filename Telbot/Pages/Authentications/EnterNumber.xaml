@@ -6,7 +6,7 @@
       mc:Ignorable="d" 
       FontFamily="/Telbot;component/Fonts/vazir/#Vazir FD-WOL"
       d:DesignHeight="600" d:DesignWidth="800"
-	Title="EnterNumber">
+	Title="">
     <Page.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Height" Value="40px"/>
@@ -96,6 +96,12 @@
                 <StackPanel Orientation="Horizontal">
                     <Button Content="ارسال کد" Margin="0,30,15,0" Click="btn_send_code"></Button>
                     <Button Content="تنظیمات apikey,apihash" Margin="15,30,0,0" Click="btn_open_Enter_configuration" Width="200"></Button>
+                </StackPanel>
+                
+                
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock FlowDirection="RightToLeft" Foreground="#ff0000" HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" FontSize="12" Margin="0,40,0,10">اگر قبلا وارد حساب تلگرام خود شده اید و با این صفحه مواجه می شوید دکمه زیر را کلیک کنید</TextBlock>
+                    <Button Name="btn_refresh" Content="تلاش دوباره برای اتصال به حساب تلگرام" Width="300" HorizontalAlignment="Center" Margin="0,0,0,0" Click="btn_refresh_Click"></Button>
                 </StackPanel>
 
             </StackPanel>

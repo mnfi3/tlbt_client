@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Telbot.Dialogs.FailedDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FailedDialog" Height="200" Width="300"
+        Title="" Height="200" Width="300"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None"
         FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" BorderThickness="1" BorderBrush="#1f1f1f">
     <Window.Resources>
@@ -9,14 +9,14 @@
     </Window.Resources>
     <DockPanel MouseDown="DockPanel_MouseDown">
         <Border DockPanel.Dock="Top" Height="30" Background="#FFFF524B" BorderBrush="Transparent" >
-            <Label FlowDirection="RightToLeft" VerticalAlignment="Center">   خطا.</Label>
+            <Label FlowDirection="RightToLeft" VerticalAlignment="Center"> </Label>
         </Border>
 
         <Grid>
             <TextBlock x:Name="txt_message" FontSize="13" FlowDirection="RightToLeft" TextWrapping="Wrap" Margin="2,10,2,0" >متنی از سرور</TextBlock>
             <StackPanel Margin="2" VerticalAlignment="Bottom">
 
-                <Button Content="بستن" HorizontalAlignment="Center" VerticalAlignment="Stretch" Click="btn_close_dialog"/>
+                <Button Style="{StaticResource BtnLarge}" Content="بستن" HorizontalAlignment="Center" VerticalAlignment="Stretch" Click="btn_close_dialog"/>
             </StackPanel>
         </Grid>
     </DockPanel>

@@ -19,10 +19,10 @@ namespace Telbot.telegram
         {
             if (client != null)
             {
-                if (!client.IsConnected)
-                {
-                    client.ConnectAsync();
-                }
+                //if (!client.IsConnected)
+                //{
+                //    client.ConnectAsync(true);
+                //}
                 return client;
             }
             //if (G.telegram.api_id == 0 || G.telegram.api_hash.Length < 3) return null;
@@ -35,12 +35,19 @@ namespace Telbot.telegram
             {
                 FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
                 _dialog.ShowDialog();
+                Log.e("telegram connection failed.error=" + ex.ToString(), "Base_telegram", "getTelegramClient");
                 return null;
             }
             catch (System.Net.Sockets.SocketException ex)
             {
                 FailedDialog _dialog = new FailedDialog("خطا در ارتباط با سرور تلگرام");
                 _dialog.ShowDialog();
+                Log.e("telegram connection failed.error=" + ex.ToString(), "Base_telegram", "getTelegramClient");
+                return null;
+            }
+            catch (Exception e)
+            {
+                Log.e("telegram connection failed.error=" + e.ToString(), "Base_telegram", "getTelegramClient");
                 return null;
             }
 

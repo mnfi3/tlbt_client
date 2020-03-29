@@ -1,0 +1,462 @@
+file created ...
+
+2020-03-29  20:03:54	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  20:03:54	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  20:03:54	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  20:03:57	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  20:13:00	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  20:13:00	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  20:13:00	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  20:13:03	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  20:15:49	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  20:15:49	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  20:15:49	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  20:15:53	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  20:15:53	[ERROR]		[Channel_telegram].[getChannels]	<< telegram connection failed.error=System.InvalidOperationException: Couldn't read the packet length
+   at TLSharp.Core.Network.TcpTransport.<Receive>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.MtProtoSender.<Receive>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<ConnectAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Telbot.telegram.Channel_telegram.<getChannels>d__0.MoveNext() in c:\dev\c_charp\Telbot\Telbot\telegram\Channel_telegram.cs:line 55 >>
+
+2020-03-29  20:15:54	[ERROR]		[Channel_telegram].[getChannels]	<< get telegram channel failed.error=System.IO.IOException: Unable to write data to the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.BeginSend(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, AsyncCallback callback, Object state)
+   at System.Net.Sockets.NetworkStream.BeginWrite(Byte[] buffer, Int32 offset, Int32 size, AsyncCallback callback, Object state)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.BeginWrite(Byte[] buffer, Int32 offset, Int32 size, AsyncCallback callback, Object state)
+   at System.IO.Stream.<>c.<BeginEndWriteAsync>b__53_0(Stream stream, ReadWriteParameters args, AsyncCallback callback, Object state)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncTrim[TInstance,TArgs](TInstance thisRef, TArgs args, Func`5 beginMethod, Func`3 endMethod)
+   at System.IO.Stream.BeginEndWriteAsync(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.Stream.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken)
+   at TLSharp.Core.Network.TcpTransport.<Send>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.MtProtoSender.<Send>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.MtProtoSender.<Send>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<RequestWithDcMigration>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<SendRequestAsync>d__20`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<SendAuthenticatedRequestAsync>d__21`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<GetUserDialogsAsync>d__30.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Telbot.telegram.Channel_telegram.<getChannels>d__0.MoveNext() in c:\dev\c_charp\Telbot\Telbot\telegram\Channel_telegram.cs:line 82 >>
+
+2020-03-29  20:17:31	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  20:17:31	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  20:17:31	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  20:17:35	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  20:25:05	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  20:25:05	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  20:25:05	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  20:25:08	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  20:36:20	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  20:36:21	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  20:36:21	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  20:36:23	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  20:58:38	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  20:58:38	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  20:58:38	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  20:58:41	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  21:03:26	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:03:27	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:03:27	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:03:30	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  21:04:44	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:04:44	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:04:45	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:04:48	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  21:12:59	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:12:59	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:12:59	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:13:03	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  21:13:08	[INFO]		[MainWindow].[txt_telegram_logout_Click]	<< telegram session delete successfull >>
+
+2020-03-29  21:13:09	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:13:09	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:13:09	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:13:09	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:13:16	[ERROR]		[Auth_telegram].[sendVerificationCode]	<< verification code send failed.error=System.InvalidOperationException: msg_seqno too low (the server has already received a message with a lower msg_id but with either a higher or an equal and odd seqno)
+   at TLSharp.Core.Network.MtProtoSender.HandleBadMsgNotification(UInt64 messageId, Int32 sequence, BinaryReader messageReader)
+   at TLSharp.Core.Network.MtProtoSender.processMessage(UInt64 messageId, Int32 sequence, BinaryReader messageReader, TLMethod request, CancellationToken token)
+   at TLSharp.Core.Network.MtProtoSender.<Receive>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<ConnectAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Telbot.telegram.Auth_telegram.<sendVerificationCode>d__0.MoveNext() in c:\dev\c_charp\Telbot\Telbot\telegram\Auth_telegram.cs:line 68 >>
+
+2020-03-29  21:13:28	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:13:29	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:13:29	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:13:33	[INFO]		[License].[on_telegram_auth_checked]	<< telegram auth was successfull >>
+
+2020-03-29  21:14:02	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:14:03	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:14:03	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:14:03	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:14:07	[ERROR]		[Auth_telegram].[sendVerificationCode]	<< verification code send failed.error=System.OverflowException: Arithmetic operation resulted in an overflow.
+   at TLSharp.Core.Network.TcpTransport.<Receive>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.MtProtoPlainSender.<Receive>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Auth.Authenticator.<DoAuthentication>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<ConnectAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Telbot.telegram.Auth_telegram.<sendVerificationCode>d__0.MoveNext() in c:\dev\c_charp\Telbot\Telbot\telegram\Auth_telegram.cs:line 68 >>
+
+2020-03-29  21:14:40	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:14:40	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:14:40	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:14:40	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:15:22	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:15:23	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:15:23	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:15:23	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:15:47	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:15:47	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:15:47	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:15:47	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:16:02	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:16:03	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:16:03	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:16:03	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:23:03	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8080
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:23:06	[ERROR]		[Request].[get]	<< connection error in url:http://localhost:8080/telbot/api/v1/member-app/auth-check?	System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8080
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Telbot.api.Request.<get>d__0.MoveNext() in c:\dev\c_charp\Telbot\Telbot\api\Request.cs:line 52 >>
+
+2020-03-29  21:23:11	[ERROR]		[Request].[get]	<< connection error in url:http://localhost:8080/telbot/api/v1/member-app/auth-check?	System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8080
+   at System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult asyncResult)
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at System.Net.Http.HttpClientHandler.GetResponseCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Telbot.api.Request.<get>d__0.MoveNext() in c:\dev\c_charp\Telbot\Telbot\api\Request.cs:line 52 >>
+
+2020-03-29  21:23:35	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:23:35	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:23:35	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:24:19	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:24:19	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:24:19	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:24:19	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:26:37	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:26:38	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:26:38	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:26:38	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:27:00	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:27:00	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:27:00	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:27:00	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:29:44	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:29:45	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:29:45	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:29:45	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:30:14	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:30:14	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:30:14	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:30:14	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:33:01	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:33:01	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:33:01	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:33:01	[WARNIGN]		[License].[checkTelegramSession]	<< telegram sesseion file not exist >>
+
+2020-03-29  21:34:00	[ERROR]		[Auth_telegram].[isUserAuthorized]	<< telegram authorize failed >>
+
+2020-03-29  21:35:29	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\Telbot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-03-29  21:35:30	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-03-29  21:35:30	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-03-29  21:35:30	[ERROR]		[Auth_telegram].[isUserAuthorized]	<< telegram authorize failed >>
+
+2020-03-29  21:35:32	[ERROR]		[License].[on_telegram_auth_checked]	<< telegram auth failed >>
+
+2020-03-29  21:36:06	[ERROR]		[Auth_telegram].[verifyCode]	<< verify code failed or need for two step verification password.error=TLSharp.Core.Exceptions.CloudPasswordNeededException: This Account has Cloud Password !
+   at TLSharp.Core.Network.MtProtoSender.HandleRpcResult(UInt64 messageId, Int32 sequence, BinaryReader messageReader, TLMethod request)
+   at TLSharp.Core.Network.MtProtoSender.processMessage(UInt64 messageId, Int32 sequence, BinaryReader messageReader, TLMethod request, CancellationToken token)
+   at TLSharp.Core.Network.MtProtoSender.<Receive>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<RequestWithDcMigration>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<MakeAuthAsync>d__16.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Telbot.telegram.Auth_telegram.<verifyCode>d__5.MoveNext() in c:\dev\c_charp\Telbot\Telbot\telegram\Auth_telegram.cs:line 114 >>
+
+2020-03-29  21:36:15	[INFO]		[Auth_telegram].[verifyTwoStepPassword]	<< login to telegram was successfull >>
+
+2020-03-29  21:38:16	[ERROR]		[Channel_telegram].[getChannels]	<< telegram connection failed.error=System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   at System.Net.Sockets.NetworkStream.EndRead(IAsyncResult asyncResult)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.EndRead(IAsyncResult asyncResult)
+   at System.IO.Stream.<>c.<BeginEndReadAsync>b__43_1(Stream stream, IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncTrimPromise`1.Complete(TInstance thisRef, Func`3 endMethod, IAsyncResult asyncResult, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.TcpTransport.<Receive>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.MtProtoSender.<Receive>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<ConnectAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Telbot.telegram.Channel_telegram.<getChannels>d__0.MoveNext() in c:\dev\c_charp\Telbot\Telbot\telegram\Channel_telegram.cs:line 55 >>
+
+2020-03-29  21:38:16	[ERROR]		[Channel_telegram].[getChannels]	<< get telegram channel failed.error=System.InvalidOperationException: Client not connected to server.
+   at TLSharp.Core.Network.TcpTransport.<Send>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.MtProtoSender.<Send>d__6.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.MtProtoSender.<Send>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<ConnectAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Telbot.telegram.Channel_telegram.<getChannels>d__0.MoveNext() in c:\dev\c_charp\Telbot\Telbot\telegram\Channel_telegram.cs:line 80 >>
+

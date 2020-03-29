@@ -19,6 +19,7 @@ using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 using Telbot.model;
 using Telbot.system;
+using Telbot.helper;
 
 namespace Telbot.Dialogs
 {
@@ -118,7 +119,7 @@ namespace Telbot.Dialogs
                     switch (column)
                     {
                         case 1:
-                            mobile.number = str;
+                            mobile.number = Mobile_helper.fixNumber(str);
                             break;
                         case 2:
                             mobile.first_name = str;

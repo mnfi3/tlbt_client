@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\dev\c_charp\Telbot\Telbot\App.xaml
-11151548125
+17-163655618
 
-24-2044982882
-161815327292
-MainWindow.xaml;
+56-439044646
+25332765878
+Dialogs\MessageDialog.xaml;Dialogs\EnterConfiguration.xaml;Dialogs\ConfirmDialog.xaml;Dialogs\FailedDialog.xaml;Dialogs\ProgressDialog.xaml;Dialogs\SuccessfullDialog.xaml;Items\CircleProgress.xaml;Items\ItemContact.xaml;Items\ItemGroup.xaml;Items\ItemNumber.xaml;Pages\Authentications\EnterCode.xaml;Pages\Authentications\EnterNumber.xaml;Pages\Authentications\EnterTwoStepVerificationPassword.xaml;Pages\Authentications\License.xaml;Pages\Authentications\Login.xaml;Windows\AuthenticationWindow.xaml;Windows\MainWindow.xaml;
 
-False
+True
 

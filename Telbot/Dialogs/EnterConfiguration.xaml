@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Telbot.Dialogs.EnterConfiguration"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="EnterConfiguration"
+        Title=""
         Height="300" Width="400"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" Icon="/Telbot;component/ic_app.ico"

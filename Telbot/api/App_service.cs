@@ -44,7 +44,7 @@ namespace Telbot.api
                 FailedDialog _dialog = new FailedDialog(res.message);
                 _dialog.ShowDialog();
                 app = new App_model();
-                Log.e(res.full_response, "App_service", "login");
+                //Log.e(res.full_response, "App_service", "login");
             }
 
             eventLogin(app, new EventArgs());
@@ -64,7 +64,7 @@ namespace Telbot.api
         {
             Response res = sender as Response;
             eventAuthCheck(res, new EventArgs());
-            Log.i(res.full_response, "App_service", "authCheck");
+            //Log.i(res.full_response, "App_service", "authCheck");
         }
 
 

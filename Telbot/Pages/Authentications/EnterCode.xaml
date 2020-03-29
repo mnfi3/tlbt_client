@@ -7,7 +7,7 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Background="Transparent"
       FontFamily="/Telbot;component/Fonts/vazir/#Vazir FD-WOL"
-	Title="EnterCode">
+	Title="">
     <Page.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Height" Value="40px"/>

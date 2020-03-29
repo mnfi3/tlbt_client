@@ -26,6 +26,8 @@ using Telbot.telegram;
 using TeleSharp.TL;
 using Newtonsoft.Json;
 using TeleSharp.TL.Contacts;
+using Telbot.storage;
+using System.IO;
 
 namespace Telbot
 {
@@ -37,6 +39,7 @@ namespace Telbot
 
         string file_path = "";
         TLChannel selected_channel = null;
+        MessageDialog _dialog_add = new MessageDialog("");
             
         public List<ItemNumber> tempListOfItem = new List<ItemNumber>();
 
@@ -49,8 +52,8 @@ namespace Telbot
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            loadContacts();
-            //loadChannels();
+            //loadContacts();
+            loadChannels();
             //loadNumbers();
         }
 
@@ -84,6 +87,7 @@ namespace Telbot
 
         private void searchNumbers(string search, string from, string to, string first_name, string last_name)
         {
+            prg_numbers.Visibility = Visibility.Visible;
             Mobile_db db = new Mobile_db();
             List<Mobile_model> mobiles = db.searchMobiles(search, from, to, first_name, last_name);
             setMobiles(mobiles);
@@ -93,6 +97,7 @@ namespace Telbot
         //---------------------------------------------contacts---------------------------------------------------
         private void loadContacts()
         {
+            prg_contact.Visibility = Visibility.Visible;
             Contact_telegram contact = new Contact_telegram();
             contact.getContacts(on_contacts_received);
         }
@@ -104,11 +109,13 @@ namespace Telbot
             List<TLUser> users = (List<TLUser>)res.data;
             setContacts(users);
 
-            loadChannels();
+            //loadChannels();
         }
 
         private async void setContacts(List<TLUser> users)
         {
+            prg_contact.Visibility = Visibility.Visible;
+            lst_contacts.Items.Clear();
             Random random = new Random();
             ItemContact _item = null;
             foreach (TLUser user in users)
@@ -122,14 +129,13 @@ namespace Telbot
                 lst_contacts.Items.Add(_item);
                 await Task.Delay(1);
             }
-            //MessageBox.Show("setted");
-
-
+            prg_contact.Visibility = Visibility.Collapsed;
         }
 
         //---------------------------------------------channels---------------------------------------------------
         private  void loadChannels()
         {
+            prg_channel.Visibility = Visibility.Visible;
             Channel_telegram channel = new Channel_telegram();
             channel.getChannels(on_channels_received);
         }
@@ -144,6 +150,7 @@ namespace Telbot
 
         private async void setChannels(List<TLChannel> channels)
         {
+            lst_groups.Items.Clear();
             prg_channel.Visibility = Visibility.Visible;
             Random random = new Random();
             ItemGroup _item = null;
@@ -225,6 +232,7 @@ namespace Telbot
 
         private void btn_add_member_to_group_Click(object sender, RoutedEventArgs e)
         {
+
             TLVector<TLInputPhoneContact> contacts = new TLVector<TLInputPhoneContact>();
             TLInputPhoneContact contact;
             foreach (var item in lst_numbers.Items.OfType<ItemNumber>())
@@ -232,24 +240,35 @@ namespace Telbot
                 if (!(bool)item.chk_num.IsChecked) continue;
 
                 string first_name = (item.mobile.first_name.Length > 0) ? item.mobile.first_name : item.mobile.number;
-                contact = new TLInputPhoneContact() { FirstName=item.mobile.first_name, LastName = item.mobile.last_name, Phone = item.mobile.number};
+                contact = new TLInputPhoneContact() { FirstName = item.mobile.first_name, LastName = item.mobile.last_name, Phone = item.mobile.number, ClientId=0 };
                 contacts.Add(contact);
             }
 
-            if(contacts.Count == 0)
+            if (contacts.Count == 0)
             {
                 FailedDialog _dialog = new FailedDialog("هیچ شماره ای انتخاب نشده است");
-                _dialog.Show();
+                _dialog.ShowDialog();
                 return;
             }
 
             if (selected_channel == null)
             {
                 FailedDialog _dialog = new FailedDialog("هیچ کانال یا گروهی انتخاب نشده است");
-                _dialog.Show();
+                _dialog.ShowDialog();
                 return;
             }
 
+
+
+
+            ConfirmDialog _d = new ConfirmDialog("آیا مطمئن هستید؟");
+            if(_d.ShowDialog() == false){
+                return;
+            }
+
+            _dialog_add = new MessageDialog("در حال انجام عملیات ...");
+            _dialog_add.Show();
+           
 
             Contact_telegram tel = new Contact_telegram();
             tel.addNumberToChannel(on_contacts_added, contacts, selected_channel);
@@ -258,9 +277,20 @@ namespace Telbot
 
         private void on_contacts_added(object sender, EventArgs e) 
         {
+            _dialog_add.Close();
+
             TelegramResponse res = (TelegramResponse)sender;
             List<TLUser> added_users = (List<TLUser>)res.data;
-            MessageBox.Show("تعداد افراد افزوده شده به چت = " + added_users.Count.ToString());
+            if (res.status == 1)
+            {
+                SuccessfullDialog _d2 = new SuccessfullDialog(res.message);
+                _d2.ShowDialog();
+            }
+            else
+            {
+                FailedDialog _d = new FailedDialog(res.message);
+                _d.ShowDialog();
+            }
         }
 
 
@@ -269,7 +299,7 @@ namespace Telbot
         {
             if (file_path.Length < 2)
             {
-                FailedDialog _dialog = new FailedDialog("هیچ فایلی انتهاب نشده است");
+                FailedDialog _dialog = new FailedDialog("هیچ فایلی انتخاب نشده است");
                 _dialog.ShowDialog();
                 return;
             }
@@ -287,6 +317,105 @@ namespace Telbot
         private void btn_search_Click(object sender, RoutedEventArgs e)
         {
             searchNumbers(inp_number.Text, inp_number_from.Text, inp_number_to.Text, inp_name.Text, inp_lastname.Text);
+        }
+
+        private void btn_refresh_channels_Click(object sender, RoutedEventArgs e)
+        {
+            loadChannels();
+        }
+
+        private void btn_refresh_contacts_Click(object sender, RoutedEventArgs e)
+        {
+            loadContacts();
+        }
+
+        private void btn_remove_Click(object sender, RoutedEventArgs e)
+        {
+            List<Mobile_model> mobiles = new List<Mobile_model>();
+            foreach (var item in lst_numbers.Items.OfType<ItemNumber>())
+            {
+                if (!(bool)item.chk_num.IsChecked) continue;
+
+                mobiles.Add(item.mobile);
+            }
+
+            if (mobiles.Count == 0)
+            {
+                FailedDialog _dialog = new FailedDialog("هیچ شماره ای انتخاب نشده است");
+                _dialog.ShowDialog();
+                return;
+            }
+
+            ConfirmDialog _d = new ConfirmDialog("آیا مطمئن هستید؟");
+            if (_d.ShowDialog() == false)
+            {
+                return;
+            }
+
+            prg_numbers.Visibility = Visibility.Visible;
+            Mobile_db db = new Mobile_db();
+            db.removeMobiles(mobiles);
+
+            foreach (var item in lst_numbers.Items.OfType<ItemNumber>())
+            {
+                foreach (Mobile_model m in mobiles)
+                {
+                    if (item.mobile.number == m.number)
+                    {
+                        item.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+            prg_numbers.Visibility = Visibility.Collapsed;
+            SuccessfullDialog _dialog2 = new SuccessfullDialog("عملیات با موفقیت انجام شد");
+            _dialog2.ShowDialog();
+        }
+
+
+
+        private void txt_app_logout_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmDialog _dialog = new ConfirmDialog("آیا مطمئن هستید؟");
+            if (_dialog.ShowDialog() == false) return;
+
+            App_pref pref = new App_pref();
+            pref.saveApp(new App_model());
+            G.app = pref.getApp();
+
+            AuthenticationWindow _window = new AuthenticationWindow();
+            _window.Show();
+            this.Close();
+        }
+
+        private void txt_telegram_logout_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmDialog _dialog = new ConfirmDialog("آیا مطمئن هستید؟");
+            if (_dialog.ShowDialog() == false) return;
+
+            if (File.Exists("session.dat"))
+            {
+                try
+                {
+                    File.Delete("session.dat");
+                    Log.i("telegram session delete successfull", "MainWindow", "txt_telegram_logout_Click");
+                }
+                catch(Exception ex)
+                {
+                    Log.e("telegram session delete failed.error=" + ex.ToString(), "MainWindow", "txt_telegram_logout_Click");
+                }
+            }
+
+            AuthenticationWindow _window = new AuthenticationWindow();
+            _window.Show();
+            this.Close();
+        }
+
+        private void txt_exit_Click(object sender, RoutedEventArgs e)
+        {
+            ConfirmDialog _dialog = new ConfirmDialog("آیا مطمئن هستید؟");
+            if (_dialog.ShowDialog() == false) return;
+
+            System.Windows.Application.Current.Shutdown();
         }
 
 

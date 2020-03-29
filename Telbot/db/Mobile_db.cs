@@ -96,7 +96,15 @@ namespace Telbot.db
         }
 
 
-
+        public void removeMobiles(List<Mobile_model> mobiles)
+        {
+            foreach (Mobile_model mobile in mobiles)
+            {
+                values.Clear();
+                values.Add("@number", mobile.number);
+                db.delete("delete from mobiles where number = @number", values);
+            }
+        }
         public Mobile_model findMobile(string number)
         {
             Mobile_model mobile = null;

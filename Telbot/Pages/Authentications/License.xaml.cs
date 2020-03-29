@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Telbot.api;
 using Telbot.Dialogs;
+using Telbot.helper;
 using Telbot.license;
 using Telbot.model;
 using Telbot.storage;
@@ -41,6 +44,9 @@ namespace Telbot.Pages.Authentications
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
+            checkForUpdate();
+
             checkLicense();
         }
 
@@ -48,6 +54,56 @@ namespace Telbot.Pages.Authentications
         {
             checkLicense();
         }
+
+
+
+        private void checkForUpdate()
+        {
+            var webRequest = WebRequest.Create(@"" + Urls.UPDATE_INFO_URL);
+
+            string str_update = Config.VERSION;
+            try
+            {
+                using (var response = webRequest.GetResponse())
+                using (var content = response.GetResponseStream())
+                using (var reader = new StreamReader(content))
+                {
+                    str_update = reader.ReadToEnd();
+                }
+
+            }
+            catch (Exception e1) {
+                Log.e("check for update failed.error=" + e1.ToString(), "License", "checkForUpdate");
+            }
+
+
+
+            //application is latest version
+            if (str_update.Contains(Config.VERSION)) return;
+
+
+            ConfirmDialog _dialog = new ConfirmDialog("نسخه ی جدید برنامه منتشر شده است.آیا میخواهید آپدیت کنید؟");
+            if (_dialog.ShowDialog() == false) return;
+
+            //backup database
+            DB_helper.backup();
+            string updater_path = AppDomain.CurrentDomain.BaseDirectory + "updater.exe";
+            Process updater_app = new Process();
+            updater_app.StartInfo.FileName = updater_path;
+            try
+            {
+                updater_app.Start();
+                System.Windows.Application.Current.Shutdown();
+            }
+            catch (Exception ex) 
+            {
+                Log.e("updater run failed.error=" + ex.ToString(), "License", "checkForUpdate");
+            }
+
+
+            return;
+        }
+
 
 
         private void checkLicense()
@@ -66,6 +122,7 @@ namespace Telbot.Pages.Authentications
             //local session not set
             else
             {
+                Mouse.OverrideCursor = previousCursor;
                 this.NavigationService.Navigate(new Uri("/Pages/Authentications/Login.xaml", UriKind.Relative));
             }
         }
@@ -86,6 +143,7 @@ namespace Telbot.Pages.Authentications
                 App_pref pref = new App_pref();
                 pref.saveApp(app);
                 G.app = pref.getApp();
+                Log.i("server auth was successfull from server", "License", "auth_checked");
 
                 //check time token
                 DynamicTokenManager manager = new DynamicTokenManager();
@@ -96,6 +154,8 @@ namespace Telbot.Pages.Authentications
                     previousCursor = Mouse.OverrideCursor;
                     Mouse.OverrideCursor = Cursors.Wait;
 
+                    Log.i("app auth was successfull", "License", "auth_checked");
+
                     checkTelegramSession();
                 }
                 //time token not ok
@@ -104,6 +164,7 @@ namespace Telbot.Pages.Authentications
                     FailedDialog _dialog = new FailedDialog("لطفا تاریخ و ساعت سیستم خود را برای بررسی لایسنس به صورت دقیق تنظیم کنید ");
                     _dialog.ShowDialog();
                     btn_check_again.Visibility = Visibility;
+                    Log.e("time token check failed", "License", "auth_checked");
                 }
 
             }
@@ -134,6 +195,7 @@ namespace Telbot.Pages.Authentications
             {
                 Mouse.OverrideCursor = previousCursor;
                 this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+                Log.w("telegram sesseion file not exist", "License", "checkTelegramSession");
             }
         }
 
@@ -147,7 +209,7 @@ namespace Telbot.Pages.Authentications
 
         private void on_telegram_auth_checked(object sender, EventArgs e)
         {
-           
+            Mouse.OverrideCursor = previousCursor;
 
             TelegramResponse res = (TelegramResponse)sender;
             if (res.status == 1)
@@ -156,14 +218,18 @@ namespace Telbot.Pages.Authentications
                 mainWindow.Show();
                 Window.GetWindow(this).Close();
 
-                Mouse.OverrideCursor = previousCursor;
+                Log.i("telegram auth was successfull", "License", "on_telegram_auth_checked");
+
+               
 
             }
             else
             {
-                Mouse.OverrideCursor = previousCursor;
                 FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
                 _dialog.ShowDialog();
+
+                Log.e("telegram auth failed", "License", "on_telegram_auth_checked");
+
                 this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
             }
         }

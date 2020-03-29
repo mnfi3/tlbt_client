@@ -19,6 +19,7 @@ using Telbot.model;
 using Telbot.storage;
 using Telbot.api;
 using System.Threading;
+using Telbot.telegram;
 
 namespace Telbot.Pages.Authentications
 {
@@ -69,9 +70,42 @@ namespace Telbot.Pages.Authentications
                 App_pref pref = new App_pref();
                 pref.saveApp(app);
                 G.app = pref.getApp();
-                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+
+                checkTelegramAuth();
+                //this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
             }
         }
+
+         private void checkTelegramAuth()
+        {
+            Auth_telegram auth = new Auth_telegram();
+            auth.isUserAuthorized(on_telegram_auth_checked);
+        }
+
+         private void on_telegram_auth_checked(object sender, EventArgs e)
+         {
+
+
+             TelegramResponse res = (TelegramResponse)sender;
+             if (res.status == 1)
+             {
+                 MainWindow mainWindow = new MainWindow();
+                 mainWindow.Show();
+                 Window.GetWindow(this).Close();
+
+                 Mouse.OverrideCursor = previousCursor;
+
+             }
+             else
+             {
+                 Mouse.OverrideCursor = previousCursor;
+                 FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
+                 _dialog.ShowDialog();
+                 this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+             }
+         }
+
+
 
 
         private bool checkEntry()
@@ -89,7 +123,6 @@ namespace Telbot.Pages.Authentications
 
 
 
-        public bool Cancel { get; set; }
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             var link = (Hyperlink)sender;

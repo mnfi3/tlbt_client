@@ -115,8 +115,6 @@ namespace Telbot.helper
 
         public static void excelToDb(string location, EventHandler percent_handler = null)
         {
-            EventHandler handler = null;
-            handler += percent_handler;
             Mobile_db db = new Mobile_db();
             Excel.Application xlApp;
             Excel.Workbook xlWorkBook;
@@ -152,15 +150,15 @@ namespace Telbot.helper
                             str = (range.Cells[row, column] as Excel.Range).Value2;
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception e1)
                     {
-                        Log.e("reading from excel failed. error=" + e.ToString(), "Excel_helper", "excelToDb");
+                        Log.e("reading from excel failed. error=" + e1.ToString(), "Excel_helper", "excelToDb");
                     }
 
                     switch (column)
                     {
                         case 1:
-                            mobile.number = str;
+                            mobile.number = Mobile_helper.fixNumber(str);
                             break;
                         case 2:
                             mobile.first_name = str;
@@ -174,12 +172,15 @@ namespace Telbot.helper
                 }
 
                 Mobile_model mob = db.findMobile(mobile.number);
-                if (mob != null)
+                if (mob == null)
                 {
                     db.saveMobile(mobile);
                 }
-                double percent = row / row_count * 100;
-                handler(percent, new EventArgs());
+
+                double percent = (row / row_count) * 100;
+                percent_handler(percent, new EventArgs());
+
+
             }
 
             xlWorkBook.Close(true, null, null);
@@ -188,6 +189,8 @@ namespace Telbot.helper
             Marshal.ReleaseComObject(xlWorkSheet);
             Marshal.ReleaseComObject(xlWorkBook);
             Marshal.ReleaseComObject(xlApp);
+
+
         }
     }
 }

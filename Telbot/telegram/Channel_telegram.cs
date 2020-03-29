@@ -15,13 +15,12 @@ namespace Telbot.telegram
     class Channel_telegram
     {
         TelegramResponse response;
-        private static TelegramClient client;
+        private TelegramClient client = null;
 
         public Channel_telegram()
         {
            response = new TelegramResponse();
-           client = Base_telegram.getTelegramClient();
-
+           //client = Base_telegram.getTelegramClient();
         }
 
 
@@ -48,13 +47,24 @@ namespace Telbot.telegram
         //}
 
 
-        public virtual async void getChannels(EventHandler handler)
+        public  async void getChannels(EventHandler handler)
         {
+            try
+            {
+                client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
+                await client.ConnectAsync();
+            }
+            catch (Exception e)
+            {
+                Log.e("telegram connection failed.error=" + e.ToString(), "Channel_telegram", "getChannels");
+            }
+           
             if (client == null)
             {
                 response.status = 0;
                 response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
                 response.data = "";
+                Log.e("get telegram channel failed", "Channel_telegram", "getChannels");
                 handler(response, new EventArgs());
                 return;
             }
@@ -64,7 +74,10 @@ namespace Telbot.telegram
             //List<TLUser> users = result.Users.OfType<TLUser>().ToList<TLUser>();
             try
             {
-                //await client.ConnectAsync();
+
+
+                if(!client.IsConnected)
+                    await client.ConnectAsync();
 
                 var dialogs = (TLDialogs)await client.GetUserDialogsAsync();
                 List<TLChannel> channels = dialogs.Chats.OfType<TLChannel>().ToList<TLChannel>();
@@ -79,6 +92,7 @@ namespace Telbot.telegram
                     response.status = 0;
                     response.message = "خطایی در دریافت اطلاعات رخ داده است";
                     response.data = channels;
+                    Log.e("get telegram channel failed", "Channel_telegram", "getChannels");
                 }
             }
             catch (Exception e)
@@ -86,6 +100,7 @@ namespace Telbot.telegram
                 response.status = 0;
                 response.message = "خطایی در دریافت اطلاعات رخ داده است";
                 response.data = new List<TLChannel>();
+                Log.e("get telegram channel failed.error=" + e.ToString(), "Channel_telegram", "getChannels");
             }
             handler(response, new EventArgs());
         }

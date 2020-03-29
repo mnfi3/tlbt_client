@@ -166,6 +166,45 @@ namespace Telbot.Pages.Authentications
             return "+" + code;
         }
 
+
+
+
+
+        private void btn_refresh_Click(object sender, RoutedEventArgs e)
+        {
+            checkTelegramAuth();
+        }
+
+        private void checkTelegramAuth()
+        {
+            Auth_telegram auth = new Auth_telegram();
+            auth.isUserAuthorized(on_telegram_auth_checked);
+        }
+
+        private void on_telegram_auth_checked(object sender, EventArgs e)
+        {
+
+
+            TelegramResponse res = (TelegramResponse)sender;
+            if (res.status == 1)
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Window.GetWindow(this).Close();
+
+                Mouse.OverrideCursor = previousCursor;
+
+            }
+            else
+            {
+                Mouse.OverrideCursor = previousCursor;
+                FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
+                _dialog.ShowDialog();
+                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+            }
+        }
+
+       
        
     }
 }

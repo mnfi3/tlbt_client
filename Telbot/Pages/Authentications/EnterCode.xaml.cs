@@ -33,6 +33,7 @@ namespace Telbot.Pages.Authentications
         public EnterCode()
         {
             InitializeComponent();
+
             time = TimeSpan.FromSeconds(120);
             countdown = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {

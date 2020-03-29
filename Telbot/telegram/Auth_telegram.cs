@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Telbot.Dialogs;
 using Telbot.system;
 using TeleSharp.TL;
+using TeleSharp.TL.Users;
 using TLSharp.Core;
 using TLSharp.Core.Exceptions;
 
@@ -49,20 +50,24 @@ namespace Telbot.telegram
 
 
 
-        public async void sendVerificationCode(EventHandler handler)
+        public  async void sendVerificationCode(EventHandler handler)
         {
             if (client == null)
             {
                 response.status = 0;
                 response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
                 response.data = "";
+                Log.e("verification code send failed", "Auth_telegram", "sendVerificationCode");
                 handler(response, new EventArgs());
+
                 return;
             }
 
-            await client.ConnectAsync();
             try
             {
+                //if (!client.IsConnected)
+                await client.ConnectAsync();
+
                 var hash = await client.SendCodeRequestAsync(G.telegram.mobile);
 
                 if (hash.Length > 0)
@@ -76,13 +81,15 @@ namespace Telbot.telegram
                     response.status = 0;
                     response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
                     response.data = hash;
+                    Log.e("verification code send failed", "Auth_telegram", "sendVerificationCode");
                 }
             }
             catch (Exception e)
             {
                 response.status = 0;
                 response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
-                response.data = null;
+                response.data = "";
+                Log.e("verification code send failed.error=" + e.ToString(), "Auth_telegram", "sendVerificationCode");
             }
            
             handler(response, new EventArgs());
@@ -90,13 +97,14 @@ namespace Telbot.telegram
 
 
 
-        public async void verifyCode( EventHandler handler, string hash, string code)
+        public  async void verifyCode( EventHandler handler, string hash, string code)
         {
             if (client == null)
             {
                 response.status = 0;
                 response.message = "عملیات شکست خورد";
                 response.data = "";
+                Log.e("verify code failed", "Auth_telegram", "verifyCode");
                 handler(response, new EventArgs());
                 return;
             }
@@ -109,6 +117,7 @@ namespace Telbot.telegram
                 response.status = 1;
                 response.message = "با موفقیت وارد حساب تلگرام شدید";
                 response.data = user;
+                Log.i("login to telegram was successfull", "Auth_telegram", "verifyCode");
                 handler(response, new EventArgs());
             }
             catch (CloudPasswordNeededException ex)
@@ -116,6 +125,7 @@ namespace Telbot.telegram
                 response.status = 2;
                 response.message = "کد تایید دو مرحله ای را وارد کنید";
                 response.data = user;
+                Log.e("verify code failed or need for two step verification password.error=" + ex.ToString() , "Auth_telegram", "verifyCode");
                 handler(response, new EventArgs());
             }
             catch (InvalidPhoneCodeException ex)
@@ -125,67 +135,89 @@ namespace Telbot.telegram
 
                 response.status = 0;
                 response.message = "کد تایید اشتباه می باشد";
-                response.data = null;
+                response.data = new TLUser(); ;
+                Log.e("verify code failed.error=" + ex.ToString(), "Auth_telegram", "verifyCode");
                 handler(response, new EventArgs());
             }
         }
 
 
-        public async void verifyTwoStepPassword(EventHandler handler, string password)
+        public  async void verifyTwoStepPassword(EventHandler handler, string password)
         {
             if (client == null)
             {
                 response.status = 0;
                 response.message = "عملیات شکست خورد";
                 response.data = "";
+                Log.e("verify two step verification failed", "Auth_telegram", "verifyTwoStepPassword");
                 handler(response, new EventArgs());
                 return;
             }
 
-            var passwordSetting = await client.GetPasswordSetting();
-            TLUser user = null;
-            user = await client.MakeAuthWithPasswordAsync(passwordSetting, password);
-            if (user != null)
+            try
             {
-                response.status = 1;
-                response.message = "ورود به حساب تلگرام با موفقیت انجام شد";
-                response.data = user;
-            }
-            else
-            {
-                response.status = 0;
-                response.message = "ورود به حساب تلگرام شکست خورد لطفا رمز خود را با دقت وارد کنید";
-                response.data = user;
-            }
+                var passwordSetting = await client.GetPasswordSetting();
+                TLUser user = null;
+                user = await client.MakeAuthWithPasswordAsync(passwordSetting, password);
+                if (user != null)
+                {
+                    response.status = 1;
+                    response.message = "ورود به حساب تلگرام با موفقیت انجام شد";
+                    response.data = user;
+                    Log.i("login to telegram was successfull", "Auth_telegram", "verifyTwoStepPassword");
+                }
+                else
+                {
+                    response.status = 0;
+                    response.message = "ورود به حساب تلگرام شکست خورد لطفا رمز خود را با دقت وارد کنید";
+                    response.data = user;
+                    Log.e("verify two step verification failed", "Auth_telegram", "verifyTwoStepPassword");
+                }
 
+            }
+            catch (Exception e)
+            {
+                Log.e("verify two step verification failed.error=" + e.ToString(), "Auth_telegram", "verifyTwoStepPassword");
+            }
             handler(response, new EventArgs());
         }
 
 
-        public void isUserAuthorized(EventHandler handler)
+        public  void isUserAuthorized(EventHandler handler)
         {
             if (client == null)
             {
                 response.status = 0;
                 response.message = "عملیات شکست خورد";
                 response.data = "";
+                Log.e("telegram authorize failed", "Auth_telegram", "isUserAuthorized");
                 handler(response, new EventArgs());
                 return;
             }
 
-            bool is_user_logged_in = client.IsUserAuthorized();
-            if(is_user_logged_in)
+            try
             {
-                response.status = 1;
-                response.message = "ورود به حساب تلگرام با موفقیت انجام شد";
-                response.data = is_user_logged_in;
+                bool is_user_logged_in = client.IsUserAuthorized();
+                if (is_user_logged_in)
+                {
+                    response.status = 1;
+                    response.message = "ورود به حساب تلگرام با موفقیت انجام شد";
+                    response.data = is_user_logged_in;
+                }
+                else
+                {
+                    response.status = 0;
+                    response.message = "ورود به حساب تلگرام شکست خورد لطفا دوباره امتحان کنید";
+                    response.data = is_user_logged_in;
+                    Log.e("telegram authorize failed", "Auth_telegram", "isUserAuthorized");
+                }
+
             }
-            else
+            catch (Exception e)
             {
-                response.status = 0;
-                response.message = "ورود به حساب تلگرام شکست خورد لطفا دوباره امتحان کنید";
-                response.data = is_user_logged_in;
+                Log.e("telegram authorize failed.error=" + e.ToString(), "Auth_telegram", "isUserAuthorized");
             }
+
 
             handler(response, new EventArgs());
         }
