@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Telbot.Dialogs;
 using Telbot.system;
 using TeleSharp.TL;
@@ -27,21 +28,7 @@ namespace Telbot.telegram
         }
 
 
-        //private TelegramClient newClient()
-        //{
-        //    if (client != null) return client;
-        //    if (G.telegram.api_id == 0 || G.telegram.api_hash.Length < 3) return null;
-        //    try
-        //    {
-        //        return new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
-        //    }
-        //    catch (MissingApiConfigurationException ex)
-        //    {
-        //        FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
-        //        _dialog.ShowDialog();
-        //        return null;
-        //    }
-        //}
+        
 
 
         public  async void getContacts(EventHandler handler)
@@ -50,7 +37,19 @@ namespace Telbot.telegram
             try
             {
                 client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
-                await client.ConnectAsync();
+                //await client.ConnectAsync();
+            }
+            catch (MissingApiConfigurationException ex)
+            {
+                FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
+                _dialog.ShowDialog();
+                Log.e("telegram connection failed.error=" + ex.ToString(), "Contact_telegram", "getContacts");
+            }
+            catch (System.Net.Sockets.SocketException ex)
+            {
+                FailedDialog _dialog = new FailedDialog("خطا در ارتباط با سرور تلگرام");
+                _dialog.ShowDialog();
+                Log.e("telegram connection failed.error=" + ex.ToString(), "Contact_telegram", "getContacts");
             }
             catch (Exception e)
             {
@@ -58,16 +57,7 @@ namespace Telbot.telegram
             }
 
 
-
-            if (client == null)
-            {
-                response.status = 0;
-                response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
-                response.data = "";
-                Log.e("get telegram channel failed", "Channel_telegram", "getChannels");
-                handler(response, new EventArgs());
-                return;
-            }
+           
 
 
             if (client == null)
@@ -85,8 +75,19 @@ namespace Telbot.telegram
 
             try
             {
-                if (!client.IsConnected)
+                try
+                {
                     await client.ConnectAsync();
+                }
+                catch (Exception e)
+                {
+                    response.status = 0;
+                    response.message = "عملیات شکست خورد.لطفا دوباره امتحان کنید";
+                    response.data = new List<TLUser>();
+                    Log.e("connection fail to get telegram contacts.error=" + e.ToString(), "Contact_telegram", "getContacts");
+                    handler(response, new EventArgs());
+                    return;
+                }
 
                 var result = await client.GetContactsAsync();
                 if (result.Users.Count > 0)
@@ -120,229 +121,151 @@ namespace Telbot.telegram
         }
 
 
-        public  async void addNumberToChannel(EventHandler handler, TLVector<TLInputPhoneContact> contacts, TLChannel channel)
+        public  async void addNumberToChannel(EventHandler task_finish_handler, EventHandler on_contact_added_handler, TLVector<TLInputPhoneContact> contacts, TLChannel channel)
         {
             try
             {
                 client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
-                await client.ConnectAsync();
+                //await client.ConnectAsync();
+            }
+            catch (MissingApiConfigurationException ex)
+            {
+                FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
+                _dialog.ShowDialog();
+                Log.e("telegram connection failed.error=" + ex.ToString(), "Contact_telegram", "addNumberToChannel");
+            }
+            catch (System.Net.Sockets.SocketException ex)
+            {
+                FailedDialog _dialog = new FailedDialog("خطا در ارتباط با سرور تلگرام");
+                _dialog.ShowDialog();
+                Log.e("telegram connection failed.error=" + ex.ToString(), "Contact_telegram", "addNumberToChannel");
             }
             catch (Exception e)
             {
                 Log.e("telegram connection failed.error=" + e.ToString(), "Contact_telegram", "addNumberToChannel");
             }
 
-
             if (client == null)
             {
                 response.status = 0;
                 response.message = "عملیات شکست خورد.لطفا دوباره امتحان کنید";
-                response.data = new List<TLUser>();
-                Log.e("add numbers to channel failed", "Contact_telegram", "addNumberToChannel");
-                handler(response, new EventArgs());
+                Log.e("add Number To Channel failed", "Contact_telegram", "addNumberToChannel");
+                task_finish_handler(response, new EventArgs());
                 return;
             }
 
-            //----------------------------------check phone is user?----------------------------------------
-            //foreach (TLInputPhoneContact c in contacts)
-            //{
-            //    try
-            //    {
-            //        //TLreq
-            //        //var result = await client.ImportContactsAsync(c.Phone);
-            //        contacts.Remove(c);
-            //    }
-            //    catch (Exception e)
-            //    {
 
-            //    }
-            //}
-
-           
 
 
             //-----------------------------------add to contacts-----------------------------------------------
             TLImportedContacts importedContacts = null;
-            try
+            List<TLUser> imported_users = new List<TLUser>();
+            Random rand = new Random();
+            List<TLUser> added_users = new List<TLUser>();
+            foreach (TLInputPhoneContact c in contacts)
             {
-                //if (!client.IsConnected)
-                await client.ConnectAsync();
-
-               
-                //foreach (TLInputPhoneContact c in contacts)
-                //{
-                    //importedContacts = await client.SendRequestAsync<TLImportedContacts>(new TLRequestImportContacts
-                    //{
-                    //    Contacts = new TLVector<TLInputPhoneContact> { new TLInputPhoneContact{FirstName = c.FirstName, LastName = c.LastName, Phone = c.Phone}}
-                    //});
-
-                    importedContacts = await client.SendRequestAsync<TLImportedContacts>(new TLRequestImportContacts
-                    {
-                        Contacts = contacts
-                    });
-
-                    importedContacts.ToString();
-                    //await Task.Delay(3000);
-                //}
-
-            }
-            catch (Exception e)
-            {
-                //importedContacts.ToString();
-                response.status = 0;
-                response.message = "عملیات  شکست خورد.لطفا دوباره امتحان کنید";
+                response.message = "  درحال افزودن کاربر به مخاطبین " + c.Phone;
                 response.data = new List<TLUser>();
-                Log.e("add numbers to telegram contacts failed.error=" + e.ToString(), "Contact_telegram", "addNumberToChannel");
-            }
+                on_contact_added_handler(response, new EventArgs());
 
-            //------------------------------------get new users from contacts------------------------------------------------
-
-           
-            try
-            {
-                //client.Dispose();
-
-                //if (!client.IsConnected)
-                await client.ConnectAsync();
-
-                var result = await client.GetContactsAsync();
-                List<TLUser> all_users = result.Users.OfType<TLUser>().ToList<TLUser>();
-
-                List<TLUser> new_users = new List<TLUser>();
-
-                foreach (TLUser u in all_users)
-                {
-                    foreach (TLInputPhoneContact c in contacts)
-                    {
-                        if (c.Phone == u.Phone)
-                        {
-                            new_users.Add(u);
-                        }
-                    }
-                }
-
-
-                //------------------------------------add to searched users------------------------------------------------
                 try
                 {
                     await client.ConnectAsync();
-                    var req1 = new TeleSharp.TL.Contacts.TLRequestSearch() { Q = "Laadrii", Limit = 1 };
-                    var update1 = await client.SendRequestAsync<TeleSharp.TL.Contacts.TLFound>(req1);
-                    update1.ToString();
-                    List<TLUser>searched_users = update1.Users.OfType<TLUser>().ToList<TLUser>();
+                }
+                catch (Exception e)
+                {
+                    Log.e("telegram connection failed.error=" + e.ToString(), "Contact_telegram", "addNumberToChannel");
+                    response.status = 0;
+                    response.message = "مشکلی در ارتباط با تلگرام رخ داده است.لطفا دوباره سعی کنید";
+                    response.data = new List<TLUser>();
 
-                    TLInputUser new_user;
-                    TLVector<TLAbsInputUser> to_added_users = new TLVector<TLAbsInputUser>();
-                    TLVector<TLAbsInputChannel> target_channel = new TLVector<TLAbsInputChannel>();
-                    target_channel.Add(new TLInputChannel() { ChannelId = channel.Id, AccessHash = (long)channel.AccessHash });
+                    task_finish_handler(response, new EventArgs());
+                    return;
+                }
 
-                    foreach (TLUser user in searched_users)
+                int num = (int)rand.Next(10, 15);
+                await Task.Delay(num * 1000);
+
+
+                importedContacts = await client.SendRequestAsync<TLImportedContacts>(new TLRequestImportContacts
+                {
+                    Contacts = new TLVector<TLInputPhoneContact> { new TLInputPhoneContact { FirstName = c.FirstName, LastName = c.LastName, Phone = c.Phone, ClientId = (int)rand.Next(1, 20000) } }
+                });
+
+
+                //contact has not telegram  accoutn
+                if (importedContacts.Users.Count == 0)
+                {
+                    response.message = "  کاربر در تلگرام حساب ندارد " + c.Phone;
+                    response.data = new List<TLUser>();
+                    on_contact_added_handler(response, new EventArgs());
+                }
+                //contact has telegram  accoutn
+                else
+                {
+                    response.message = "  کاربر با موفقیت به لیست مخاطبین افزوده شد.در حال افزودن به چت... " + c.Phone;
+                    response.data = new List<TLUser>();
+                    on_contact_added_handler(response, new EventArgs());
+
+                    imported_users.Add(importedContacts.Users.OfType<TLUser>().ToList<TLUser>()[0]);
+
+                    //-----------------------------------add to channel-----------------------------------------------
+                    try
                     {
-                        new_user = new TLInputUser() { UserId = user.Id, AccessHash = (long)user.AccessHash};
-                        to_added_users.Add(new_user);
+                        await client.ConnectAsync();
                     }
-                    var req = new TLRequestInviteToChannel()
+                    catch (Exception e)
+                    {
+                        Log.e("telegram connection failed.error=" + e.ToString(), "Contact_telegram", "addNumberToChannel");
+                        response.status = 0;
+                        response.message = "مشکلی در ارتباط با تلگرام رخ داده است.لطفا دوباره سعی کنید";
+                        response.data = new List<TLUser>();
+
+                        task_finish_handler(response, new EventArgs());
+                        return;
+                    }
+
+
+                    num = (int)rand.Next(30, 35);
+                    await Task.Delay(num * 1000);
+
+                    TLVector<TLAbsInputUser> to_added_users = new TLVector<TLAbsInputUser>() { new TLInputUser() { UserId = imported_users[imported_users.Count - 1].Id, AccessHash = (long)imported_users[imported_users.Count - 1].AccessHash } };
+                    TLVector<TLAbsInputChannel> target_channels = new TLVector<TLAbsInputChannel>() { new TLInputChannel() { ChannelId = channel.Id, AccessHash = (long)channel.AccessHash } };
+                    var req2 = new TLRequestInviteToChannel()
                     {
 
-                        Channel = target_channel[0],
+                        Channel = target_channels[0],
                         Users = to_added_users
                     };
 
-                    //await client.ConnectAsync();
-                    var update = await client.SendRequestAsync<TLUpdates>(req);
+                    try
+                    {
+                        var update = await client.SendRequestAsync<TLUpdates>(req2);
+                        added_users.Add(imported_users[imported_users.Count - 1]);
 
-                    List<TLUser> added_users = new List<TLUser>();
+                        response.message = "  کاربر با موفقیت به چت افزوده شد " + c.Phone;
+                        response.data = new List<TLUser>();
+                        on_contact_added_handler(response, new EventArgs());
+                    }
+                    catch (Exception e)
+                    {
+                        response.message = "   دسترسی به افزودن این کاربر به چت وجود ندارد" + c.Phone;
+                        response.data = new List<TLUser>();
+                        on_contact_added_handler(response, new EventArgs());
+                    }
                 }
-                catch(Exception e)
-                {
-                    e.ToString();
-                }
 
+                num = (int)rand.Next(20, 25);
+                await Task.Delay(num * 1000);
 
-                //------------------------------------add to channel in one step------------------------------------------------
-
-                //if (!client.IsConnected) 
-                //await client.ConnectAsync();
-
-
-                //TLInputUser new_user;
-                //TLVector<TLAbsInputUser> to_added_users = new TLVector<TLAbsInputUser>();
-                //TLVector<TLAbsInputChannel> target_channel = new TLVector<TLAbsInputChannel>();
-                //target_channel.Add(new TLInputChannel() { ChannelId = channel.Id, AccessHash = (long)channel.AccessHash });
-                //foreach (TLUser user in new_users)
-                //{
-                //    new_user = new TLInputUser() { UserId = user.Id, AccessHash = (long)user.AccessHash };
-                //    to_added_users.Add(new_user);
-                //}
-                
-                //var req = new TLRequestInviteToChannel()
-                //{
-
-                //    Channel = target_channel[0],
-                //    Users = to_added_users
-                //};
-
-                //await client.ConnectAsync();
-                //var update = await client.SendRequestAsync<TLUpdates>(req);
-
-                response.status = 1;
-                response.message = "عملیات با موفقیت انجام شد";
-                response.data = new List<TLUser>();
-
-            }
-            catch (Exception e)
-            {
-                response.status = 0;
-                response.message = "عملیات  شکست خورد.لطفا دوباره امتحان کنید";
-                response.data = new List<TLUser>();
-                Log.e("add contacts to channel failed.error=" + e.ToString(), "Contact_telegram", "addNumberToChannel");
             }
 
 
+            response.status = 1;
+            response.message = " تعداد کل افراد افزوده شده به چت : " + added_users.Count.ToString();
+            response.data = new List<TLUser>();
 
-
-            //------------------------------------add to channel one by one with delay------------------------------------------------
-
-            //await client.ConnectAsync();
-            //foreach (TLUser user in new_users)
-            //{
-
-
-            //    if (!client.IsConnected) await client.ConnectAsync();
-
-            //    TLInputUser u = new TLInputUser() { UserId = user.Id, AccessHash = (long)user.AccessHash };
-            //    TLVector<TLAbsInputUser> u2 = new TLVector<TLAbsInputUser>();
-            //    TLVector<TLAbsInputChannel> c2 = new TLVector<TLAbsInputChannel>();
-            //    u2.Add(u);
-            //    c2.Add(new TLInputChannel() { ChannelId = channel.Id, AccessHash = (long)channel.AccessHash });
-            //    var req2 = new TLRequestInviteToChannel()
-            //    {
-
-            //        Channel = c2[0],
-            //        Users = u2
-            //    };
-            //    await client.ConnectAsync();
-
-            //    try
-            //    {
-            //        var update = await client.SendRequestAsync<TLUpdates>(req2);
-            //        added_users.Add(user);
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        e.ToString();
-            //    }
-
-
-            //    Random rand = new Random();
-            //    int num = (int)rand.Next(3, 15);
-            //    await Task.Delay(num * 1000);
-
-            //}
-
-
-
-            handler(response, new EventArgs());
+            task_finish_handler(response, new EventArgs());
         }
 
         

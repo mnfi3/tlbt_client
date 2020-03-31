@@ -15,6 +15,7 @@ namespace Telbot.api
     {
         private EventHandler eventLogin = null;
         private EventHandler eventAuthCheck = null;
+        private EventHandler eventLogout = null;
 
 
 
@@ -66,6 +67,26 @@ namespace Telbot.api
             eventAuthCheck(res, new EventArgs());
             //Log.i(res.full_response, "App_service", "authCheck");
         }
+
+
+
+
+         public void logout(EventHandler handler)
+        {
+            Request req = new Request();
+            eventLogout += handler;
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "app-token", G.app.token }, { "client-key", G.client_key } };
+            req.get(Urls.APP_LOGOUT, new Dictionary<string, string>(), headers, logoutCallBack);
+        }
+
+        private void logoutCallBack(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            eventLogout(res, new EventArgs());
+            
+        }
+
+
 
 
 

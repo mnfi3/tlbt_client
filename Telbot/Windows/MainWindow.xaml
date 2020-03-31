@@ -10,19 +10,28 @@
         >
     <DockPanel>
         <Menu DockPanel.Dock="Top" FlowDirection="RightToLeft" Height="22" VerticalContentAlignment="Center">
+            <MenuItem Name="txt_mobile" Header="0000000000" FontWeight="Bold" Visibility="Visible" Margin="0,0,0,0">
+
+            </MenuItem>
+            
             <MenuItem Header="حساب کاربری">
                 <MenuItem Name="txt_app_logout" Click="txt_app_logout_Click" Header="خروچ از حساب کاربری" />
                 <MenuItem Name="txt_telegram_logout" Click="txt_telegram_logout_Click" Header=" خروچ از حساب کاربری تلگرام" />
             </MenuItem>
+            
+            <MenuItem Name="txt_about" Click="txt_about_Click" Header="درباره ما" >
+
+            </MenuItem>
+            
             <MenuItem Name="txt_exit" Click="txt_exit_Click" Header="خروج" >
 
             </MenuItem>
             <MenuItem Header="خرید اشتراک" Visibility="Collapsed">
 
             </MenuItem>
-            <MenuItem Header="درباره ما" Visibility="Collapsed">
+           
 
-            </MenuItem>
+            
         </Menu>
         <Grid FlowDirection="RightToLeft">
 
@@ -171,7 +180,7 @@
             <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch"></GridSplitter>
             <Grid Column="2">
                 <Button Name="btn_refresh_channels" Click="btn_refresh_channels_Click" HorizontalAlignment="Right" VerticalAlignment="Top"  Style="{StaticResource BtnLarge}" Content="دریافت چت ها" Height="25" Width="90" Margin="0,5,5,0"></Button>
-                <Label  Content="لیست گروه ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Top" BorderThickness="0"></Label>
+                <Label  Content="لیست گروه ها و کانال ها" HorizontalContentAlignment="Left" HorizontalAlignment="Left"  VerticalAlignment="Top" BorderThickness="0"></Label>
                 <ListView Margin="0,40,0,0" x:Name="lst_groups"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0" SelectionChanged="lst_groups_SelectionChanged">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>

@@ -16,7 +16,7 @@ namespace Telbot.storage
         
         private static string json_string = null;
         private const string FOLDER = @"C:\" + Config.APPLICATION_NAME + @"\";
-        private const string FILE = @"C:\" + Config.APPLICATION_NAME + @"\setting.tlgbt";
+        private static string FILE = @"C:\" + Config.APPLICATION_NAME + @"\" + G.app_directory_name + "setting.tlgbt";
 
 
 

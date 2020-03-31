@@ -34,7 +34,10 @@ namespace Telbot.Items
         {
             txt_fullname.Text = user.FirstName + " " + user.LastName;
             txt_phone.Content = user.Phone;
-            txt_user_name.Content = "@" + user.Username;
+            if (user.Username != null)
+                txt_user_name.Content = "@" + user.Username;
+            else
+                txt_user_name.Content = "";
         }
     }
 }

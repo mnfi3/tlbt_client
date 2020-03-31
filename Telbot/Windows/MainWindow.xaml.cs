@@ -28,6 +28,7 @@ using Newtonsoft.Json;
 using TeleSharp.TL.Contacts;
 using Telbot.storage;
 using System.IO;
+using Telbot.api;
 
 namespace Telbot
 {
@@ -52,9 +53,17 @@ namespace Telbot
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //change loggin flag
+            //save telegram login flag
+            Telegram_pref pref = new Telegram_pref();
+            G.telegram.is_logged_in = 1;
+            pref.saveTelegram(G.telegram);
+            G.telegram = pref.getTelegram();
+
             //loadContacts();
             loadChannels();
             //loadNumbers();
+            txt_mobile.Header = G.telegram.mobile.Replace("+", "");
         }
 
 
@@ -266,12 +275,15 @@ namespace Telbot
                 return;
             }
 
-            _dialog_add = new MessageDialog("در حال انجام عملیات ...");
-            _dialog_add.Show();
+            //_dialog_add = new MessageDialog("در حال انجام عملیات ...");
+            //_dialog_add.Show();
            
 
-            Contact_telegram tel = new Contact_telegram();
-            tel.addNumberToChannel(on_contacts_added, contacts, selected_channel);
+            //Contact_telegram tel = new Contact_telegram();
+            //tel.addNumberToChannel(on_contacts_added, contacts, selected_channel);
+
+            AddToChannelDialog _add_dialog = new AddToChannelDialog(contacts, selected_channel);
+            _add_dialog.ShowDialog();
             
         }
 
@@ -310,7 +322,7 @@ namespace Telbot
         
         void readFromExcel()
         {
-            ProgressDialog _dialog = new ProgressDialog(file_path);
+            AddMobileDialog _dialog = new AddMobileDialog(file_path);
             _dialog.Show();
         }
 
@@ -329,6 +341,8 @@ namespace Telbot
             loadContacts();
         }
 
+
+        //------------------------------------remove mobiles------------------------------------------------
         private void btn_remove_Click(object sender, RoutedEventArgs e)
         {
             List<Mobile_model> mobiles = new List<Mobile_model>();
@@ -372,50 +386,67 @@ namespace Telbot
         }
 
 
-
+        //------------------------------------app logout------------------------------------------------
         private void txt_app_logout_Click(object sender, RoutedEventArgs e)
         {
             ConfirmDialog _dialog = new ConfirmDialog("آیا مطمئن هستید؟");
             if (_dialog.ShowDialog() == false) return;
 
-            App_pref pref = new App_pref();
-            pref.saveApp(new App_model());
-            G.app = pref.getApp();
-
-            AuthenticationWindow _window = new AuthenticationWindow();
-            _window.Show();
-            this.Close();
+            App_service service = new App_service();
+            service.logout(app_logout_completed);
+           
         }
 
+        private void app_logout_completed(object sender, EventArgs e)
+        {
+            Response res = sender as Response;
+            if (res.status == 1)
+            {
+                App_pref pref = new App_pref();
+                pref.saveApp(new App_model());
+                G.app = pref.getApp();
+
+                SuccessfullDialog _dialog = new SuccessfullDialog(res.message);
+                _dialog.ShowDialog();
+
+                AuthenticationWindow _window = new AuthenticationWindow();
+                _window.Show();
+                this.Close();
+            }
+            else
+            {
+                FailedDialog _dialog = new FailedDialog(res.message);
+                _dialog.ShowDialog();
+            }
+        }
+
+
+        //------------------------------------telegram logout------------------------------------------------
         private void txt_telegram_logout_Click(object sender, RoutedEventArgs e)
         {
             ConfirmDialog _dialog = new ConfirmDialog("آیا مطمئن هستید؟");
             if (_dialog.ShowDialog() == false) return;
 
-            if (File.Exists("session.dat"))
-            {
-                try
-                {
-                    File.Delete("session.dat");
-                    Log.i("telegram session delete successfull", "MainWindow", "txt_telegram_logout_Click");
-                }
-                catch(Exception ex)
-                {
-                    Log.e("telegram session delete failed.error=" + ex.ToString(), "MainWindow", "txt_telegram_logout_Click");
-                }
-            }
+            Auth_telegram auth = new Auth_telegram();
+            auth.logout();
 
             AuthenticationWindow _window = new AuthenticationWindow();
             _window.Show();
             this.Close();
         }
 
+        //------------------------------------close app------------------------------------------------
         private void txt_exit_Click(object sender, RoutedEventArgs e)
         {
             ConfirmDialog _dialog = new ConfirmDialog("آیا مطمئن هستید؟");
             if (_dialog.ShowDialog() == false) return;
 
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void txt_about_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(Config.SITE_URL);
         }
 
 

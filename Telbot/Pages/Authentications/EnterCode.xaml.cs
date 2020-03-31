@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Telbot.Dialogs;
+using Telbot.storage;
 using Telbot.system;
 using Telbot.telegram;
 
@@ -114,6 +115,12 @@ namespace Telbot.Pages.Authentications
             TelegramResponse res = (TelegramResponse)sender;
             if (res.status == 1)
             {
+                //save telegram login flag
+                Telegram_pref pref = new Telegram_pref();
+                G.telegram.is_logged_in = 1;
+                pref.saveTelegram(G.telegram);
+                G.telegram = pref.getTelegram();
+
                 SuccessfullDialog _dialog = new SuccessfullDialog(res.message);
                 _dialog.ShowDialog();
 
@@ -123,6 +130,12 @@ namespace Telbot.Pages.Authentications
             }
             else
             {
+                //save telegram login flag
+                Telegram_pref pref = new Telegram_pref();
+                G.telegram.is_logged_in = 0;
+                pref.saveTelegram(G.telegram);
+                G.telegram = pref.getTelegram();
+
                 FailedDialog _dialog = new FailedDialog(res.message);
                 _dialog.ShowDialog();
                 this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));

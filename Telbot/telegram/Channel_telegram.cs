@@ -54,10 +54,24 @@ namespace Telbot.telegram
                 client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
                 await client.ConnectAsync();
             }
+            catch (MissingApiConfigurationException ex)
+            {
+                FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
+                _dialog.ShowDialog();
+                Log.e("telegram connection failed.error=" + ex.ToString(), "Channel_telegram", "getChannels");
+            }
+            catch (System.Net.Sockets.SocketException ex)
+            {
+                FailedDialog _dialog = new FailedDialog("خطا در ارتباط با سرور تلگرام");
+                _dialog.ShowDialog();
+                Log.e("telegram connection failed.error=" + ex.ToString(), "Channel_telegram", "getChannels");
+            }
             catch (Exception e)
             {
                 Log.e("telegram connection failed.error=" + e.ToString(), "Channel_telegram", "getChannels");
             }
+
+            
            
             if (client == null)
             {
@@ -79,8 +93,23 @@ namespace Telbot.telegram
                 if(!client.IsConnected)
                     await client.ConnectAsync();
 
-                var dialogs = (TLDialogs)await client.GetUserDialogsAsync();
-                List<TLChannel> channels = dialogs.Chats.OfType<TLChannel>().ToList<TLChannel>();
+                List<TLChannel> channels = new List<TLChannel>();
+                var result = await client.GetUserDialogsAsync();
+                //var dialogs;
+                try
+                {
+                    var dialogs = (TLDialogs)result;
+                    channels = dialogs.Chats.OfType<TLChannel>().ToList<TLChannel>();
+                    
+                }
+                catch (Exception e)
+                {
+                    var dialogs = (TLDialogsSlice)result;
+                    channels = dialogs.Chats.OfType<TLChannel>().ToList<TLChannel>();
+                    Log.e("channels cast failed.error=" + e.ToString(), "Channel_telegram", "getChannels");
+                }
+
+                //channels = dialogs.Chats.OfType<TLChannel>().ToList<TLChannel>();
                 if (channels != null)
                 {
                     response.status = 1;

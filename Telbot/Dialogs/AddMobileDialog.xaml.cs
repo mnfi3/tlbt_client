@@ -26,11 +26,11 @@ namespace Telbot.Dialogs
     /// <summary>
     /// Interaction logic for ProgressDialog.xaml
     /// </summary>
-    public partial class ProgressDialog : Window
+    public partial class AddMobileDialog : Window
     {
 
         string file_path;
-        public ProgressDialog(string path)
+        public AddMobileDialog(string path)
         {
             InitializeComponent();
             this.file_path = path;

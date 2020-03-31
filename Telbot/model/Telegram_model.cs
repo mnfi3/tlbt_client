@@ -16,10 +16,8 @@ namespace Telbot.model
         {
             get
             {
-
                 if (File.Exists("session.dat"))
                 {
-
                     return 1;
                 }
                 return 0;

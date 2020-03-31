@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Telbot.Dialogs;
+using Telbot.storage;
+using Telbot.system;
 using Telbot.telegram;
 
 namespace Telbot.Pages.Authentications
@@ -85,8 +87,15 @@ namespace Telbot.Pages.Authentications
             TelegramResponse res = (TelegramResponse)sender;
             if (res.status == 1)
             {
+                //save telegram login flag
+                Telegram_pref pref = new Telegram_pref();
+                G.telegram.is_logged_in = 1;
+                pref.saveTelegram(G.telegram);
+
+
                 SuccessfullDialog _dialog = new SuccessfullDialog(res.message);
                 _dialog.ShowDialog();
+
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

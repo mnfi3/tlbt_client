@@ -13,13 +13,14 @@ namespace Telbot.helper
         public static void backup()
         {
             string fileName = "app_db.db";
+            string new_fileName = G.app_directory_name + "app_db.db";
             string sourcePath = AppDomain.CurrentDomain.BaseDirectory;
             string targetPath = @"C:\" + Config.APPLICATION_NAME;
 
             try
             {
                 string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
-                string destFile = System.IO.Path.Combine(targetPath, fileName);
+                string destFile = System.IO.Path.Combine(targetPath, new_fileName);
                 System.IO.Directory.CreateDirectory(targetPath);
                 System.IO.File.Copy(sourceFile, destFile, true);
             }

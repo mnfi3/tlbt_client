@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\dev\c_charp\Telbot\Telbot\App.xaml
-17-163655618
+18-890584261
 
-52-258765315
+53-1173125072
 76-856064188
-Dialogs\MessageDialog.xaml;Dialogs\EnterConfiguration.xaml;Dialogs\ConfirmDialog.xaml;Dialogs\FailedDialog.xaml;Dialogs\ProgressDialog.xaml;Dialogs\SuccessfullDialog.xaml;Items\CircleProgress.xaml;Items\ItemContact.xaml;Items\ItemGroup.xaml;Items\ItemNumber.xaml;Pages\Authentications\EnterCode.xaml;Pages\Authentications\EnterNumber.xaml;Pages\Authentications\EnterTwoStepVerificationPassword.xaml;Pages\Authentications\License.xaml;Pages\Authentications\Login.xaml;Windows\AuthenticationWindow.xaml;Windows\MainWindow.xaml;
+Dialogs\AddToChannelDialog.xaml;Dialogs\MessageDialog.xaml;Dialogs\EnterConfiguration.xaml;Dialogs\ConfirmDialog.xaml;Dialogs\FailedDialog.xaml;Dialogs\AddMobileDialog.xaml;Dialogs\SuccessfullDialog.xaml;Items\CircleProgress.xaml;Items\ItemContact.xaml;Items\ItemGroup.xaml;Items\ItemNumber.xaml;Pages\Authentications\EnterCode.xaml;Pages\Authentications\EnterNumber.xaml;Pages\Authentications\EnterTwoStepVerificationPassword.xaml;Pages\Authentications\License.xaml;Pages\Authentications\Login.xaml;Windows\AuthenticationWindow.xaml;Windows\MainWindow.xaml;
 
 False
 

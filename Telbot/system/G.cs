@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Telbot.db;
+using Telbot.helper;
 using Telbot.license;
 using Telbot.model;
 using Telbot.storage;
@@ -29,17 +30,32 @@ namespace Telbot.system
 
         public static void init() 
         {
+            DB_helper.backup();
             client_key = Security.getClientKey();
             PRIVATE_KEY = "aaa" + client_key + "bbb";
             app = new App_pref().getApp();
             telegram = new Telegram_pref().getTelegram();
             Creator_db creator = new Creator_db();
             Log.removeOldLogs();
-
+            //app_directory_name = AppDomain.CurrentDomain.BaseDirectory;
+            //app_directory_name = app_directory_name.Replace(@"\", "_");
+            //app_directory_name = app_directory_name.Replace(":", "");
+            //app_directory_name = app_directory_name.Replace(" ", "");
 
             ApiHash = "";
             ApiId = "";
 
+        }
+
+        public static string app_directory_name { 
+            get {
+                 
+                string name = AppDomain.CurrentDomain.BaseDirectory;
+                name = name.Replace(@"\", "_");
+                name = name.Replace(":", "");
+                name = name.Replace(" ", "");
+                return name;
+            }
         }
 
 

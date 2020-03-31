@@ -171,12 +171,14 @@ namespace Telbot.Pages.Authentications
             //server response not ok
             else if (res.status == 0)
             {
+                FailedDialog _dialog = new FailedDialog(res.message);
+                _dialog.ShowDialog();
                 this.NavigationService.Navigate(new Uri("/Pages/authentications/Login.xaml", UriKind.Relative));
             }
             //not server connection
             else
             {
-                FailedDialog _dialog = new FailedDialog(res.full_response);
+                FailedDialog _dialog = new FailedDialog(res.message);
                 _dialog.ShowDialog();
                 btn_check_again.Visibility = Visibility;
 
@@ -186,7 +188,8 @@ namespace Telbot.Pages.Authentications
 
         private void checkTelegramSession()
         {
-            if (G.telegram.is_session_exist == 1)
+            int a = G.telegram.is_logged_in;
+            if (File.Exists("session.dat") && G.telegram.is_logged_in == 1)
             {
                 txt_message.Text = "در حال بررسی ارتباط با سرور تلگرام ...";
                 checkTelegramAuth();
@@ -214,6 +217,12 @@ namespace Telbot.Pages.Authentications
             TelegramResponse res = (TelegramResponse)sender;
             if (res.status == 1)
             {
+
+                //save telegram login flag
+                Telegram_pref pref = new Telegram_pref();
+                G.telegram.is_logged_in = 1;
+                pref.saveTelegram(G.telegram);
+
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 Window.GetWindow(this).Close();
@@ -225,6 +234,7 @@ namespace Telbot.Pages.Authentications
             }
             else
             {
+
                 FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
                 _dialog.ShowDialog();
 

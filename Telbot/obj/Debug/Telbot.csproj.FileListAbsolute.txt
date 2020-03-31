@@ -2,7 +2,6 @@ C:\dev\c_charp\Telbot\Telbot\Telbot\bin\Debug\Telbot.exe.config
 C:\dev\c_charp\Telbot\Telbot\bin\Debug\Telbot.exe.config
 C:\dev\c_charp\Telbot\Telbot\bin\Debug\Telbot.exe
 C:\dev\c_charp\Telbot\Telbot\bin\Debug\Telbot.pdb
-C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.csprojResolveAssemblyReference.cache
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\App.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot_MarkupCompile.cache
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.g.resources
@@ -25,7 +24,6 @@ C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\MessageDialog.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\EnterConfiguration.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\ConfirmDialog.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\FailedDialog.baml
-C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\ProgressDialog.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\SuccessfullDialog.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Items\CircleProgress.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Items\ItemContact.baml
@@ -42,7 +40,6 @@ C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\MessageDialog.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\EnterConfiguration.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\ConfirmDialog.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\FailedDialog.g.cs
-C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\ProgressDialog.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\SuccessfullDialog.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Items\CircleProgress.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Items\ItemContact.g.cs
@@ -58,3 +55,8 @@ C:\dev\c_charp\Telbot\Telbot\obj\Debug\Windows\MainWindow.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot_MarkupCompile.lref
 C:\dev\c_charp\Telbot\Telbot\obj\Debug\Windows\MainWindow.baml
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Telbot.csprojResolveAssemblyReference.cache
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\AddToChannelDialog.baml
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\AddMobileDialog.baml
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\AddToChannelDialog.g.cs
+C:\dev\c_charp\Telbot\Telbot\obj\Debug\Dialogs\AddMobileDialog.g.cs

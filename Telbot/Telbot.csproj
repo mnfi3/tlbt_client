@@ -15,6 +15,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>17e6d330</NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -108,6 +108,9 @@
     <Compile Include="db\DB.cs" />
     <Compile Include="db\Mobile_db.cs" />
     <Compile Include="db\Base_db.cs" />
+    <Compile Include="Dialogs\AddToChannelDialog.xaml.cs">
+      <DependentUpon>AddToChannelDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
     </Compile>
@@ -120,8 +123,8 @@
     <Compile Include="Dialogs\FailedDialog.xaml.cs">
       <DependentUpon>FailedDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\ProgressDialog.xaml.cs">
-      <DependentUpon>ProgressDialog.xaml</DependentUpon>
+    <Compile Include="Dialogs\AddMobileDialog.xaml.cs">
+      <DependentUpon>AddMobileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\SuccessfullDialog.xaml.cs">
       <DependentUpon>SuccessfullDialog.xaml</DependentUpon>
@@ -179,6 +182,10 @@
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialogs\AddToChannelDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\MessageDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -195,7 +202,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialogs\ProgressDialog.xaml">
+    <Page Include="Dialogs\AddMobileDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

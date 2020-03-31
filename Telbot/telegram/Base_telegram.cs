@@ -29,7 +29,7 @@ namespace Telbot.telegram
             try
             {
                 client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
-                client.ConnectAsync();
+                //await client.ConnectAsync();
             }
             catch (MissingApiConfigurationException ex)
             {
