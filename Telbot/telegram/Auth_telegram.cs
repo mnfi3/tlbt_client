@@ -18,38 +18,37 @@ namespace Telbot.telegram
     class Auth_telegram
     {
         TelegramResponse response;
-        private static TelegramClient client = null;
+        private  TelegramClient client = null;
 
         public Auth_telegram()
         {
             response = new TelegramResponse();
-            client = Base_telegram.getTelegramClient();
 
-            if (client == null)
-            {
-                //if (G.telegram.api_id == 0 || G.telegram.api_hash.Length < 3) return null;
-                try
-                {
-                    client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
-                    //await client.ConnectAsync();
-                }
-                catch (MissingApiConfigurationException ex)
-                {
-                    FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
-                    _dialog.ShowDialog();
-                    Log.e("telegram connection failed.error=" + ex.ToString(), "Base_telegram", "getTelegramClient");
-                }
-                catch (System.Net.Sockets.SocketException ex)
-                {
-                    FailedDialog _dialog = new FailedDialog("خطا در ارتباط با سرور تلگرام");
-                    _dialog.ShowDialog();
-                    Log.e("telegram connection failed.error=" + ex.ToString(), "Base_telegram", "getTelegramClient");
-                }
-                catch (Exception e)
-                {
-                    Log.e("telegram connection failed.error=" + e.ToString(), "Base_telegram", "getTelegramClient");
-                }
-            }
+            //if (client == null)
+            //{
+            //    //if (G.telegram.api_id == 0 || G.telegram.api_hash.Length < 3) return null;
+            //    try
+            //    {
+            //        client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
+            //        //await client.ConnectAsync();
+            //    }
+            //    catch (MissingApiConfigurationException ex)
+            //    {
+            //        FailedDialog _dialog = new FailedDialog("مقادیر api_id یا  api_hash را با دقت وارد کنید");
+            //        _dialog.ShowDialog();
+            //        Log.e("telegram connection failed.error=" + ex.ToString(), "Base_telegram", "getTelegramClient");
+            //    }
+            //    catch (System.Net.Sockets.SocketException ex)
+            //    {
+            //        FailedDialog _dialog = new FailedDialog("خطا در ارتباط با سرور تلگرام");
+            //        _dialog.ShowDialog();
+            //        Log.e("telegram connection failed.error=" + ex.ToString(), "Base_telegram", "getTelegramClient");
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Log.e("telegram connection failed.error=" + e.ToString(), "Base_telegram", "getTelegramClient");
+            //    }
+            //}
             
 
         }
@@ -96,26 +95,24 @@ namespace Telbot.telegram
 
 
 
-            if (client == null)
+            try
             {
-                try
-                {
-                    client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
-                    //await client.ConnectAsync();
-                }
-                catch (Exception e)
-                {
-                    Log.e("verification code send failed", "Auth_telegram", "sendVerificationCode");
-                    response.status = 0;
-                    response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
-                    response.data = "";
-                    Log.e("verification code send failed_1.error=" + e.ToString(), "Auth_telegram", "sendVerificationCode");
-                    handler(response, new EventArgs());
-                }
-              
-
+                client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
+                //await client.ConnectAsync();
+            }
+            catch (Exception e)
+            {
+                Log.e("verification code send failed", "Auth_telegram", "sendVerificationCode");
+                response.status = 0;
+                response.message = "عملیات ارسال کد شکست خورد.لطفا دوباره امتحان کنید";
+                response.data = "";
+                Log.e("verification code send failed_1.error=" + e.ToString(), "Auth_telegram", "sendVerificationCode");
+                handler(response, new EventArgs());
                 return;
             }
+              
+
+                
 
             try
             {
@@ -156,6 +153,23 @@ namespace Telbot.telegram
 
         public  async void verifyCode( EventHandler handler, string hash, string code)
         {
+            try
+            {
+                client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
+                //await client.ConnectAsync();
+            }
+            catch (Exception e)
+            {
+                Log.e("verification code send failed", "Auth_telegram", "sendVerificationCode");
+                response.status = 0;
+                response.message = "عملیات تایید کد شکست خورد.لطفا دوباره امتحان کنید";
+                response.data = "";
+                Log.e("verify code failed.error=" + e.ToString(), "Auth_telegram", "verifyCode");
+                handler(response, new EventArgs());
+                return;
+            }
+
+
             if (client == null)
             {
                 response.status = 0;
@@ -169,6 +183,8 @@ namespace Telbot.telegram
             TLUser user = null;
             try
             {
+                await client.ConnectAsync();
+
                 user = await client.MakeAuthAsync(G.telegram.mobile, hash, code);
 
                 response.status = 1;
@@ -205,6 +221,23 @@ namespace Telbot.telegram
 
         public  async void verifyTwoStepPassword(EventHandler handler, string password)
         {
+            try
+            {
+                client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
+                //await client.ConnectAsync();
+            }
+            catch (Exception e)
+            {
+                Log.e("verification code send failed", "Auth_telegram", "sendVerificationCode");
+                response.status = 0;
+                response.message = "عملیات تایید رمز شکست خورد.لطفا دوباره امتحان کنید";
+                response.data = "";
+                Log.e("verify two step verification failed.error=" + e.ToString(), "Auth_telegram", "verifyTwoStepPassword");
+                handler(response, new EventArgs());
+                return;
+            }
+
+
             if (client == null)
             {
                 response.status = 0;
@@ -217,6 +250,8 @@ namespace Telbot.telegram
 
             try
             {
+                await client.ConnectAsync();
+
                 var passwordSetting = await client.GetPasswordSetting();
                 TLUser user = null;
                 user = await client.MakeAuthWithPasswordAsync(passwordSetting, password);
@@ -242,6 +277,9 @@ namespace Telbot.telegram
             }
             catch (Exception e)
             {
+                response.status = 0;
+                response.message = "ورود به حساب تلگرام شکست خورد لطفا دوباره امتحان کنید";
+                response.data = null;
                 Log.e("verify two step verification failed.error=" + e.ToString(), "Auth_telegram", "verifyTwoStepPassword");
             }
             handler(response, new EventArgs());
@@ -262,11 +300,11 @@ namespace Telbot.telegram
 
             try
             {
-                if (client != null)
-                {
-                    client.Dispose();
-                    client = null;
-                }
+                //if (client != null)
+                //{
+                //    client.Dispose();
+                //    client = null;
+                //}
 
                 client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
                 await client.ConnectAsync();

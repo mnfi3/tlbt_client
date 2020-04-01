@@ -59,7 +59,7 @@ namespace Telbot.Dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Telbot;component/dialogs/faileddialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AutoMemberBot;component/dialogs/faileddialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Dialogs\FailedDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

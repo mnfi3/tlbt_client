@@ -7,8 +7,8 @@
     <ProjectGuid>{31E2DF15-3C94-46BC-8217-FB36F0016D1C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Telbot</RootNamespace>
-    <AssemblyName>Telbot</AssemblyName>
+    <RootNamespace>AutoMemberBot</RootNamespace>
+    <AssemblyName>AutoMemberBot</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,6 +50,21 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>mohsen340_mohsenfarjmai340%40gmail.com.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BigMath, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TLSharp.0.1.0.470\lib\net45\BigMath.dll</HintPath>
@@ -85,12 +100,12 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="TeleSharp.TL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\TLSharp.0.1.0.470\lib\net45\TeleSharp.TL.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="TLSharp.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\TLSharp.0.1.0.470\lib\net45\TLSharp.Core.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -171,11 +186,9 @@
     <Compile Include="helper\Mobile_helper.cs" />
     <Compile Include="storage\Setting_pref.cs" />
     <Compile Include="telegram\Auth_telegram.cs" />
-    <Compile Include="telegram\Base_telegram.cs" />
     <Compile Include="telegram\Channel_telegram.cs" />
     <Compile Include="telegram\Contact_telegram.cs" />
     <Compile Include="telegram\TelegramResponse.cs" />
-    <Compile Include="TeleSharpcs.cs" />
     <Compile Include="Windows\AuthenticationWindow.xaml.cs">
       <DependentUpon>AuthenticationWindow.xaml</DependentUpon>
     </Compile>
@@ -281,12 +294,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="mohsen340_mohsenfarjmai340%40gmail.com.pfx" />
     <Resource Include="Fonts\B-NAZANIN.TTF" />
     <Resource Include="Fonts\vazir\Vazir-Bold-FD-WOL.ttf" />
     <Resource Include="Fonts\vazir\Vazir-FD-WOL.ttf" />
     <Resource Include="Fonts\vazir\Vazir-Light-FD-WOL.ttf" />
     <Resource Include="Fonts\vazir\Vazir-Medium-FD-WOL.ttf" />
     <Resource Include="Fonts\vazir\Vazir-Thin-FD-WOL.ttf" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

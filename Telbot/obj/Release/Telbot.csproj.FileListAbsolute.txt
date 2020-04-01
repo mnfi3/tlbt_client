@@ -54,8 +54,8 @@ C:\dev\c_charp\Telbot\Telbot\obj\Release\Windows\MainWindow.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.g.resources
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.Properties.Resources.resources
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.csproj.GenerateResource.Cache
-C:\dev\c_charp\Telbot\Telbot\obj\Release\Telbot.csprojResolveAssemblyReference.cache
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Dialogs\AddToChannelDialog.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Dialogs\AddMobileDialog.baml
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Dialogs\AddToChannelDialog.g.cs
 C:\dev\c_charp\Telbot\Telbot\obj\Release\Dialogs\AddMobileDialog.g.cs
+C:\dev\c_charp\Telbot\Telbot\bin\Release\AutoMemberBot.exe.config

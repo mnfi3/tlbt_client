@@ -1,0 +1,69 @@
+file created ...
+
+2020-04-01  15:51:36	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at -.l1lIiIillIii1.() >>
+
+2020-04-01  15:51:52	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-04-01  15:51:52	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-04-01  15:51:53	[ERROR]		[Auth_telegram].[isUserAuthorized]	<< telegram authorize failed.error=System.InvalidOperationException: Couldn't read the packet length
+   at TLSharp.Core.Network.TcpTransport.<Receive>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.Network.MtProtoSender.<Receive>d__8.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<ConnectAsync>d__10.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at  ..MoveNext() >>
+
+2020-04-01  15:51:54	[ERROR]		[License].[on_telegram_auth_checked]	<< telegram auth failed >>
+
+2020-04-01  16:12:27	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\AutoMemberBot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-04-01  16:18:15	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\AutoMemberBot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-04-01  16:19:26	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at -.l1lIiIillIii1.() >>
+
+2020-04-01  16:34:15	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at -.l1lIiIillIii1.() >>
+
+2020-04-01  16:35:51	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at -.l1lIiIillIii1.() >>
+
+2020-04-01  16:49:33	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\AutoMemberBot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-04-01  16:54:49	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\AutoMemberBot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-04-01  18:16:31	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.d() >>
+
+2020-04-01  20:18:25	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\AutoMemberBot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+
+2020-04-01  20:21:02	[ERROR]		[License].[checkForUpdate]	<< check for update failed.error=System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Telbot.Pages.Authentications.License.checkForUpdate() in c:\dev\c_charp\AutoMemberBot\Telbot\Pages\Authentications\License.xaml.cs:line 67 >>
+

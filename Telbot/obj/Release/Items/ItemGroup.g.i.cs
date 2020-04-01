@@ -67,7 +67,7 @@ namespace Telbot.Items {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Telbot;component/items/itemgroup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AutoMemberBot;component/items/itemgroup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Items\ItemGroup.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

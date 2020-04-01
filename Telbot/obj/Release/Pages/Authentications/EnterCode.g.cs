@@ -107,7 +107,7 @@ namespace Telbot.Pages.Authentications {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Telbot;component/pages/authentications/entercode.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AutoMemberBot;component/pages/authentications/entercode.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\Authentications\EnterCode.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

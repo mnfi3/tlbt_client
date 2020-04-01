@@ -4,7 +4,7 @@
         xmlns:control="clr-namespace:Telbot.Items"
         Icon="../ic_app.ico"
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
-        Title="" Height="600" Width="1800" FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL"
+        Title="AutoMemberBot" Height="600" Width="1800" FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL"
         Loaded="Window_Loaded"
         
         >
