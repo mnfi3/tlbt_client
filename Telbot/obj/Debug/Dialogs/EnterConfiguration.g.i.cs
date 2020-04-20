@@ -67,7 +67,7 @@ namespace Telbot.Dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Telbot;component/dialogs/enterconfiguration.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AutoMemberBot;component/dialogs/enterconfiguration.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Dialogs\EnterConfiguration.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -150,13 +150,21 @@ namespace Telbot.Pages.Authentications
                 //time token is ok
                 if (manager.checkTokenValidity(app.time_token))
                 {
-                    //checkTelegramAuth();
-                    previousCursor = Mouse.OverrideCursor;
-                    Mouse.OverrideCursor = Cursors.Wait;
+                    
+                    //previousCursor = Mouse.OverrideCursor;
+                    //Mouse.OverrideCursor = Cursors.Wait;
 
                     Log.i("app auth was successfull", "License", "auth_checked");
 
-                    checkTelegramSession();
+
+                    this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+
+                    //MainWindow mainWindow = new MainWindow();
+                    //mainWindow.Show();
+                    //Window.GetWindow(this).Close();
+
+
+                    //checkTelegramSession();
                 }
                 //time token not ok
                 else
@@ -186,63 +194,63 @@ namespace Telbot.Pages.Authentications
         }
 
 
-        private void checkTelegramSession()
-        {
-            int a = G.telegram.is_logged_in;
-            if (File.Exists("session.dat") && G.telegram.is_logged_in == 1)
-            {
-                txt_message.Text = "در حال بررسی ارتباط با سرور تلگرام ...";
-                checkTelegramAuth();
-            }
-            else
-            {
-                Mouse.OverrideCursor = previousCursor;
-                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
-                Log.w("telegram sesseion file not exist", "License", "checkTelegramSession");
-            }
-        }
+        //private void checkTelegramSession()
+        //{
+        //    int a = G.telegram.is_logged_in;
+        //    if (File.Exists("session.dat") && G.telegram.is_logged_in == 1)
+        //    {
+        //        txt_message.Text = "در حال بررسی ارتباط با سرور تلگرام ...";
+        //        checkTelegramAuth();
+        //    }
+        //    else
+        //    {
+        //        Mouse.OverrideCursor = previousCursor;
+        //        this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+        //        Log.w("telegram sesseion file not exist", "License", "checkTelegramSession");
+        //    }
+        //}
 
 
 
-        private void checkTelegramAuth()
-        {
-            Auth_telegram auth = new Auth_telegram();
-            auth.isUserAuthorized(on_telegram_auth_checked);
-        }
+        //private void checkTelegramAuth()
+        //{
+        //    Auth_telegram auth = new Auth_telegram();
+        //    auth.isUserAuthorized(on_telegram_auth_checked);
+        //}
 
-        private void on_telegram_auth_checked(object sender, EventArgs e)
-        {
-            Mouse.OverrideCursor = previousCursor;
+        //private void on_telegram_auth_checked(object sender, EventArgs e)
+        //{
+        //    Mouse.OverrideCursor = previousCursor;
 
-            TelegramResponse res = (TelegramResponse)sender;
-            if (res.status == 1)
-            {
+        //    TelegramResponse res = (TelegramResponse)sender;
+        //    if (res.status == 1)
+        //    {
 
-                //save telegram login flag
-                Telegram_pref pref = new Telegram_pref();
-                G.telegram.is_logged_in = 1;
-                pref.saveTelegram(G.telegram);
+        //        //save telegram login flag
+        //        Telegram_pref pref = new Telegram_pref();
+        //        G.telegram.is_logged_in = 1;
+        //        pref.saveTelegram(G.telegram);
 
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Window.GetWindow(this).Close();
+        //        MainWindow mainWindow = new MainWindow();
+        //        mainWindow.Show();
+        //        Window.GetWindow(this).Close();
 
-                Log.i("telegram auth was successfull", "License", "on_telegram_auth_checked");
+        //        Log.i("telegram auth was successfull", "License", "on_telegram_auth_checked");
 
                
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-                FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
-                _dialog.ShowDialog();
+        //        FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
+        //        _dialog.ShowDialog();
 
-                Log.e("telegram auth failed", "License", "on_telegram_auth_checked");
+        //        Log.e("telegram auth failed", "License", "on_telegram_auth_checked");
 
-                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
-            }
-        }
+        //        this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+        //    }
+        //}
 
         
 

@@ -1,0 +1,23 @@
+file created ...
+
+2020-04-20  23:07:26	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-04-20  23:07:26	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+
+2020-04-20  23:07:34	[ERROR]		[Channel_telegram].[getChannels]	<< get telegram channel failed.error=System.InvalidOperationException: Authorize user first!
+   at TLSharp.Core.TelegramClient.<SendAuthenticatedRequestAsync>d__21`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at TLSharp.Core.TelegramClient.<GetUserDialogsAsync>d__30.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Telbot.telegram.Channel_telegram.<getChannels>d__0.MoveNext() in c:\dev\c_charp\AutoMemberBot\Telbot\telegram\Channel_telegram.cs:line 97 >>
+
+2020-04-20  23:08:32	[INFO]		[License].[auth_checked]	<< server auth was successfull from server >>
+
+2020-04-20  23:08:32	[INFO]		[License].[auth_checked]	<< app auth was successfull >>
+

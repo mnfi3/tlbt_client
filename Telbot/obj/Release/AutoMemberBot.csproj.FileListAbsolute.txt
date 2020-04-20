@@ -67,9 +67,12 @@ C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\DotNetZip.dll
 C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\Ionic.ZLib.dll
 C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\Newtonsoft.Json.dll
 C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\System.Data.SQLite.dll
+C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\TeleSharp.TL.dll
+C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\TLSharp.Core.dll
 C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\DotNetZip.xml
 C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\Newtonsoft.Json.xml
 C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\System.Data.SQLite.xml
+C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\AutoMemberBot.csprojResolveAssemblyReference.cache
 C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\AutoMemberBot.csproj.ResolveComReference.cache
 C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\Dialogs\AddToChannelDialog.baml
 C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\Dialogs\MessageDialog.baml
@@ -117,6 +120,3 @@ C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\AutoMemberBot.Properties.Resourc
 C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\AutoMemberBot.csproj.GenerateResource.Cache
 C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\AutoMemberBot.exe
 C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\AutoMemberBot.pdb
-C:\dev\c_charp\AutoMemberBot\Telbot\obj\Release\AutoMemberBot.csprojResolveAssemblyReference.cache
-C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\TeleSharp.TL.dll
-C:\dev\c_charp\AutoMemberBot\Telbot\bin\Release\TLSharp.Core.dll

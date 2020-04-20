@@ -75,7 +75,7 @@ namespace Telbot.Dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Telbot;component/dialogs/addtochanneldialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AutoMemberBot;component/dialogs/addtochanneldialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Dialogs\AddToChannelDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

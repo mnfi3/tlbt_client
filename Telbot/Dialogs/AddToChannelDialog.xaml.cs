@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Telbot.system;
 using Telbot.telegram;
 using TeleSharp.TL;
 
@@ -35,9 +36,9 @@ namespace Telbot.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            lbl_head.Content = "در حال انجام عملیات..." + "       زمان تقریبی عملیات = " + contacts.Count + " دقیقه ";
+            lbl_head.Content = "در حال انجام عملیات..." + "       زمان تقریبی عملیات = " + G.telegram.getAddTime(contacts.Count) + " دقیقه ";
             txt_message.Text = "";
-            btn_close.Visibility = Visibility.Collapsed;
+            //btn_close.Visibility = Visibility.Collapsed;
 
             startAdd();
         }

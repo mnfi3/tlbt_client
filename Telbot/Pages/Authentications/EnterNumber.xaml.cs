@@ -34,6 +34,8 @@ namespace Telbot.Pages.Authentications
             getCountryCodes();
 
             setMobile();
+
+            txt_accounts_count.Text = "تعداد اکانت های تلگرام شما در برنامه برابر است با " + G.telegram.mobiles.Count.ToString();
         }
 
 
@@ -170,38 +172,55 @@ namespace Telbot.Pages.Authentications
 
 
 
-        private void btn_refresh_Click(object sender, RoutedEventArgs e)
+        //private void btn_refresh_Click(object sender, RoutedEventArgs e)
+        //{
+        //    checkTelegramAuth();
+        //}
+
+        //private void checkTelegramAuth()
+        //{
+        //    Auth_telegram auth = new Auth_telegram();
+        //    auth.isUserAuthorized(on_telegram_auth_checked);
+        //}
+
+        //private void on_telegram_auth_checked(object sender, EventArgs e)
+        //{
+
+
+        //    TelegramResponse res = (TelegramResponse)sender;
+        //    if (res.status == 1)
+        //    {
+        //        MainWindow mainWindow = new MainWindow();
+        //        mainWindow.Show();
+        //        Window.GetWindow(this).Close();
+
+        //        Mouse.OverrideCursor = previousCursor;
+
+        //    }
+        //    else
+        //    {
+        //        Mouse.OverrideCursor = previousCursor;
+        //        FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
+        //        _dialog.ShowDialog();
+        //        this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+        //    }
+        //}
+
+
+
+
+        private void btn_open_main_window_Click(object sender, RoutedEventArgs e)
         {
-            checkTelegramAuth();
-        }
-
-        private void checkTelegramAuth()
-        {
-            Auth_telegram auth = new Auth_telegram();
-            auth.isUserAuthorized(on_telegram_auth_checked);
-        }
-
-        private void on_telegram_auth_checked(object sender, EventArgs e)
-        {
-
-
-            TelegramResponse res = (TelegramResponse)sender;
-            if (res.status == 1)
+            if (G.telegram.mobiles.Count == 0)
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Window.GetWindow(this).Close();
-
-                Mouse.OverrideCursor = previousCursor;
-
-            }
-            else
-            {
-                Mouse.OverrideCursor = previousCursor;
-                FailedDialog _dialog = new FailedDialog("اتصال به سرور تلگرام با مشکل مواجه شد");
+                FailedDialog _dialog = new FailedDialog("شما هیچ اکانت تلگرامی در برنامه ندارید.لطفا حداقل یک اکانت تلگرام اضافه کنید");
                 _dialog.ShowDialog();
-                this.NavigationService.Navigate(new Uri("/Pages/authentications/EnterNumber.xaml", UriKind.Relative));
+                return;
             }
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Window.GetWindow(this).Close();
         }
 
        

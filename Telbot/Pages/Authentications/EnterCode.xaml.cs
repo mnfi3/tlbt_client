@@ -118,6 +118,10 @@ namespace Telbot.Pages.Authentications
                 //save telegram login flag
                 Telegram_pref pref = new Telegram_pref();
                 G.telegram.is_logged_in = 1;
+                if (!G.telegram.mobiles.Contains(G.telegram.mobile))
+                {
+                    G.telegram.mobiles.Add(G.telegram.mobile);
+                }
                 pref.saveTelegram(G.telegram);
                 G.telegram = pref.getTelegram();
 

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="" Height="200" Width="300"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None"
-        FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" BorderThickness="1" BorderBrush="#1f1f1f">
+        FontFamily="/AutoMemberBot;component/Fonts/vazir/#Vazir FD-WOL" BorderThickness="1" BorderBrush="#1f1f1f">
     <Window.Resources>
 
     </Window.Resources>

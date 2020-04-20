@@ -85,7 +85,8 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical">
 
-                <TextBlock FlowDirection="RightToLeft" FontSize="12" Margin="0,0,0,10">شماره تلفن تلگرام را برای دریافت کد وارد کنید.</TextBlock>
+                <TextBlock Name="txt_accounts_count" FlowDirection="RightToLeft" Foreground="#ff0000" FontSize="12" Margin="0,0,0,10"></TextBlock>
+                <TextBlock FlowDirection="RightToLeft" FontSize="12" Margin="0,0,0,10" TextWrapping="Wrap">اگر میخواهید حساب تلگرام اضافه کنید شماره تلفن تلگرام را برای دریافت کد وارد کنید و دکمه ارسال کد را کلیک کنید</TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <ComboBox Background="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  BorderBrush="DarkRed" x:Name="country_code" FontSize="20">
 
@@ -99,9 +100,14 @@
                 </StackPanel>
                 
                 
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <!--<StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                     <TextBlock FlowDirection="RightToLeft" Foreground="#ff0000" HorizontalAlignment="Left" Padding="10" TextWrapping="Wrap" FontSize="12" Margin="0,40,0,10">اگر قبلا وارد حساب تلگرام خود شده اید و با این صفحه مواجه می شوید دکمه زیر را کلیک کنید</TextBlock>
                     <Button Name="btn_refresh" Content="تلاش دوباره برای اتصال به حساب تلگرام" Width="300" HorizontalAlignment="Center" Margin="0,0,0,0" Click="btn_refresh_Click"></Button>
+                </StackPanel>-->
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    
+                    <Button Name="btn_open_main_window" Content="برو به داخل برنامه" Width="300" HorizontalAlignment="Center" Margin="0,40,0,10" Click="btn_open_main_window_Click"></Button>
                 </StackPanel>
 
             </StackPanel>

@@ -91,7 +91,7 @@ namespace Telbot.Items {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Telbot;component/items/itemnumber.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AutoMemberBot;component/items/itemnumber.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Items\ItemNumber.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

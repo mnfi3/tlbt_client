@@ -75,7 +75,7 @@ namespace Telbot.Dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Telbot;component/dialogs/confirmdialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AutoMemberBot;component/dialogs/confirmdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Dialogs\ConfirmDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

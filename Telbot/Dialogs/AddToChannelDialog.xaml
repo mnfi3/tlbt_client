@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="" Height="200" Width="400"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None"
-        FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" BorderThickness="1" BorderBrush="#1f1f1f" Loaded="Window_Loaded">
+        FontFamily="/AutoMemberBot;component/Fonts/vazir/#Vazir FD-WOL" BorderThickness="1" BorderBrush="#1f1f1f" Loaded="Window_Loaded">
     <Window.Resources>
 
     </Window.Resources>
@@ -22,7 +22,7 @@
             <TextBlock x:Name="txt_message" FontSize="13" FlowDirection="RightToLeft" TextWrapping="Wrap" Margin="2,10,2,0" Grid.ColumnSpan="2" >متنی از سرور</TextBlock>
             
             <StackPanel Margin="2" VerticalAlignment="Bottom">
-                <Button Name="btn_close" Style="{StaticResource BtnLarge}" Content="بستن" HorizontalAlignment="Center" VerticalAlignment="Stretch" Click="btn_close_dialog_Click"/>
+                <Button Name="btn_close" Style="{StaticResource BtnLarge}" Content="لغو" HorizontalAlignment="Center" VerticalAlignment="Stretch" Click="btn_close_dialog_Click"/>
             </StackPanel>
         </Grid>
     </DockPanel>

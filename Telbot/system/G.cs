@@ -30,12 +30,13 @@ namespace Telbot.system
 
         public static void init() 
         {
-            DB_helper.backup();
+            
             client_key = Security.getClientKey();
             PRIVATE_KEY = "aaa" + client_key + "bbb";
             app = new App_pref().getApp();
             telegram = new Telegram_pref().getTelegram();
             Creator_db creator = new Creator_db();
+            DB_helper.backup();
             Log.removeOldLogs();
             //app_directory_name = AppDomain.CurrentDomain.BaseDirectory;
             //app_directory_name = app_directory_name.Replace(@"\", "_");

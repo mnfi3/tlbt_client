@@ -55,12 +55,12 @@ namespace Telbot.db
             }
             if (from.Length > 0)
             {
-                query += " and number >= @from ";
+                query += " and id >= @from ";
                 values.Add("@from", from);
             }
-            if (from.Length > 0)
+            if (to.Length > 0)
             {
-                query += " and number <= @to ";
+                query += " and id <= @to ";
                 values.Add("@to", to);
             }
             if (first_name.Length > 0)

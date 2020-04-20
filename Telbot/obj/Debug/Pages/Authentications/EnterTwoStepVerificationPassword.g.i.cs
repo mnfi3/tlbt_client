@@ -67,7 +67,8 @@ namespace Telbot.Pages.Authentications {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Telbot;component/pages/authentications/entertwostepverificationpassword.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AutoMemberBot;component/pages/authentications/entertwostepverificationpassword.x" +
+                    "aml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\Authentications\EnterTwoStepVerificationPassword.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

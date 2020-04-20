@@ -18,6 +18,7 @@ namespace Telbot
         public App()
         {
             G.init();
+         
         }
     }
 }

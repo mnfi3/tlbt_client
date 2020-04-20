@@ -4,7 +4,7 @@
         Title=""
         Height="200" Width="300" WindowStyle="None"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" BorderThickness="1" BorderBrush="#1f1f1f"
+        FontFamily="/AutoMemberBot;component/Fonts/vazir/#Vazir FD-WOL" BorderThickness="1" BorderBrush="#1f1f1f"
         ContentRendered="Window_ContentRendered"
         >
     <DockPanel MouseDown="DockPanel_MouseDown">

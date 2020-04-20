@@ -86,7 +86,7 @@ namespace Telbot
                 int i = 0;
                 foreach (Mobile_model mobile in mobiles)
                 {
-                    _item = new ItemNumber(++i, mobile);
+                    _item = new ItemNumber(mobile.id, mobile);
                     lst_numbers.Items.Add(_item);
                     await Task.Delay(1);
                 }
@@ -249,7 +249,7 @@ namespace Telbot
                 if (!(bool)item.chk_num.IsChecked) continue;
 
                 string first_name = (item.mobile.first_name.Length > 0) ? item.mobile.first_name : item.mobile.number;
-                contact = new TLInputPhoneContact() { FirstName = item.mobile.first_name, LastName = item.mobile.last_name, Phone = item.mobile.number, ClientId=0 };
+                contact = new TLInputPhoneContact() { FirstName = first_name, LastName = item.mobile.last_name, Phone = item.mobile.number, ClientId=0 };
                 contacts.Add(contact);
             }
 
@@ -447,6 +447,13 @@ namespace Telbot
         private void txt_about_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(Config.SITE_URL);
+        }
+
+        private void txt_add_account_Click(object sender, RoutedEventArgs e)
+        {
+            AuthenticationWindow _window = new AuthenticationWindow();
+            _window.Show();
+            this.Close();
         }
 
 

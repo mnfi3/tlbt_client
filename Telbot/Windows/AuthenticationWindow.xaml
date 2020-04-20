@@ -4,7 +4,7 @@
         Title="AutoMemberBot"
         Icon="../ic_app.ico"
         WindowStartupLocation="CenterScreen" WindowState="Maximized" 
-        Height="600" Width="800" FontFamily="/Telbot;component/Fonts/vazir/#Vazir FD-WOL">
+        Height="600" Width="800" FontFamily="/AutoMemberBot;component/Fonts/vazir/#Vazir FD-WOL">
 
     <Frame x:Name="authentication_frames" Source="../Pages/Authentications/License.xaml" ContentRendered="authentication_frames_ContentRendered"></Frame>
 

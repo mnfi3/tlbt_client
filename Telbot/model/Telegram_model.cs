@@ -12,22 +12,13 @@ namespace Telbot.model
 
 
         public int is_logged_in { set; get; }
-        public int is_session_exist
-        {
-            get
-            {
-                if (File.Exists("session.dat"))
-                {
-                    return 1;
-                }
-                return 0;
-            }
-        }
+      
 
 
         public string api_hash { set; get; }
         public int api_id { set; get; }
         public string hash { set; get; }
+        public List<string> mobiles { set; get; }
         public string mobile { set; get; }
         public string password { set; get; }
         public string user_id { set; get; }
@@ -37,6 +28,23 @@ namespace Telbot.model
         public string image { set; get; }
         public string bio { set; get; }
 
+
+        public int getDelayTime()
+        {
+            int mobiles_count = this.mobiles.Count;
+            int time = 30 / mobiles_count;
+
+            if (time < 3) 
+                return 3000;
+
+            return time * 1000; //milliseconds
+        }
+
+        public int getAddTime(int contacts_count)
+        {
+            return ((this.getDelayTime() * contacts_count) / 1000) / 60;//minutes
+        }
+
         public Telegram_model()
         {
             is_logged_in = 0;
@@ -44,6 +52,7 @@ namespace Telbot.model
             api_id = 0;
             hash = "";
             mobile = "";
+            mobiles = new List<string>();
             password = "";
             user_id = "";
             user_name = "";

@@ -4,7 +4,7 @@
         xmlns:control="clr-namespace:Telbot.Items"
         Icon="../ic_app.ico"
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
-        Title="AutoMemberBot" Height="600" Width="1800" FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL"
+        Title="AutoMemberBot" Height="600" Width="1800" FontFamily="/AutoMemberBot;component/Fonts/vazir/#Vazir FD-WOL"
         Loaded="Window_Loaded"
         
         >
@@ -16,9 +16,11 @@
             
             <MenuItem Header="حساب کاربری">
                 <MenuItem Name="txt_app_logout" Click="txt_app_logout_Click" Header="خروچ از حساب کاربری" />
-                <MenuItem Name="txt_telegram_logout" Click="txt_telegram_logout_Click" Header=" خروچ از حساب کاربری تلگرام" />
+                <MenuItem Name="txt_telegram_logout" Click="txt_telegram_logout_Click" Header=" خروچ از حساب کاربری تلگرام"  Visibility="Collapsed"/>
             </MenuItem>
-            
+
+            <MenuItem Name="txt_add_account" Click="txt_add_account_Click" Header="+ افزودن اکانت  تلگرام" ></MenuItem>
+
             <MenuItem Name="txt_about" Click="txt_about_Click" Header="درباره ما" >
 
             </MenuItem>
@@ -108,11 +110,11 @@
 
 
                                 <StackPanel Margin="3,0,0,0">
-                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"> از شماره :</TextBlock>
+                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"> از ردیف :</TextBlock>
                                     <TextBox x:Name="inp_number_from" Style="{StaticResource InputBox}" Height="25" VerticalAlignment="Top" Width="90" FontSize="12" PreviewTextInput="inp_number_PreviewTextInput" ></TextBox>
                                 </StackPanel>
                                 <StackPanel Margin="3,0,0,0">
-                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"> تا شماره :</TextBlock>
+                                    <TextBlock  FontSize="10" HorizontalAlignment="Left" TextAlignment="Right"> تا ردیف :</TextBlock>
                                     <TextBox x:Name="inp_number_to" Style="{StaticResource InputBox}" Height="25" VerticalAlignment="Top" Width="90" FontSize="12" PreviewTextInput="inp_number_PreviewTextInput" ></TextBox>
                                 </StackPanel>
                                 <StackPanel Margin="3,0,0,0">

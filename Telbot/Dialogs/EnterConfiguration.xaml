@@ -4,7 +4,7 @@
         Title=""
         Height="300" Width="400"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        FontFamily="/AddMemberBot;component/Fonts/vazir/#Vazir FD-WOL" Icon="/Telbot;component/ic_app.ico"
+        FontFamily="/AutoMemberBot;component/Fonts/vazir/#Vazir FD-WOL" Icon="/AutoMemberBot;component/ic_app.ico"
         Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">

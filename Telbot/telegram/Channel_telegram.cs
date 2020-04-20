@@ -51,7 +51,7 @@ namespace Telbot.telegram
         {
             try
             {
-                client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash);
+                client = new TelegramClient(G.telegram.api_id, G.telegram.api_hash, null, "s_" + G.telegram.mobile);
                 await client.ConnectAsync();
             }
             catch (MissingApiConfigurationException ex)
